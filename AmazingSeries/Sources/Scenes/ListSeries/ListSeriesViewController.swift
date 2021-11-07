@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-
 protocol ListSeriesDisplayLogic: AnyObject {
     func displaySeriesList(_ data: [ListSeries.ViewModel])
     func displayMoreSeries(_ data: [ListSeries.ViewModel])

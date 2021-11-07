@@ -34,6 +34,11 @@
 		0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC542738687D0050A135 /* ImageDownloader.swift */; };
 		0740DC57273869F50050A135 /* UIImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC56273869F50050A135 /* UIImageView+Network.swift */; };
 		0740DC5A273871800050A135 /* SeriesDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC59273871800050A135 /* SeriesDetailsConfigurator.swift */; };
+		0740DC5C2738727F0050A135 /* SeriesDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC5B2738727F0050A135 /* SeriesDetailsInteractor.swift */; };
+		0740DC5E273872850050A135 /* SeriesDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC5D273872850050A135 /* SeriesDetailsPresenter.swift */; };
+		0740DC602738728D0050A135 /* SeriesDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC5F2738728D0050A135 /* SeriesDetailsViewController.swift */; };
+		0740DC62273872930050A135 /* SeriesDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC61273872930050A135 /* SeriesDetailsView.swift */; };
+		0740DC64273873910050A135 /* SeriesDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC63273873910050A135 /* SeriesDetailsRouter.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +72,11 @@
 		0740DC542738687D0050A135 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		0740DC56273869F50050A135 /* UIImageView+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Network.swift"; sourceTree = "<group>"; };
 		0740DC59273871800050A135 /* SeriesDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsConfigurator.swift; sourceTree = "<group>"; };
+		0740DC5B2738727F0050A135 /* SeriesDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsInteractor.swift; sourceTree = "<group>"; };
+		0740DC5D273872850050A135 /* SeriesDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsPresenter.swift; sourceTree = "<group>"; };
+		0740DC5F2738728D0050A135 /* SeriesDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsViewController.swift; sourceTree = "<group>"; };
+		0740DC61273872930050A135 /* SeriesDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsView.swift; sourceTree = "<group>"; };
+		0740DC63273873910050A135 /* SeriesDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsRouter.swift; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B774945FC288380FD211A726 /* Pods-AmazingSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.release.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +215,11 @@
 			isa = PBXGroup;
 			children = (
 				0740DC59273871800050A135 /* SeriesDetailsConfigurator.swift */,
+				0740DC5B2738727F0050A135 /* SeriesDetailsInteractor.swift */,
+				0740DC5D273872850050A135 /* SeriesDetailsPresenter.swift */,
+				0740DC5F2738728D0050A135 /* SeriesDetailsViewController.swift */,
+				0740DC61273872930050A135 /* SeriesDetailsView.swift */,
+				0740DC63273873910050A135 /* SeriesDetailsRouter.swift */,
 			);
 			path = SeriesDetails;
 			sourceTree = "<group>";
@@ -344,6 +359,7 @@
 				0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */,
 				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
 				0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */,
+				0740DC5C2738727F0050A135 /* SeriesDetailsInteractor.swift in Sources */,
 				0740DBFF273807780050A135 /* ViewController.swift in Sources */,
 				0740DC5A273871800050A135 /* SeriesDetailsConfigurator.swift in Sources */,
 				0740DC57273869F50050A135 /* UIImageView+Network.swift in Sources */,
@@ -355,13 +371,17 @@
 				0740DC26273814CB0050A135 /* ListSeriesConfigurator.swift in Sources */,
 				0740DC20273814330050A135 /* ListSeriesInteractor.swift in Sources */,
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
+				0740DC5E273872850050A135 /* SeriesDetailsPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
 				0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */,
 				0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */,
 				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
+				0740DC64273873910050A135 /* SeriesDetailsRouter.swift in Sources */,
 				0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */,
 				0740DC44273830060050A135 /* Config.swift in Sources */,
+				0740DC62273872930050A135 /* SeriesDetailsView.swift in Sources */,
+				0740DC602738728D0050A135 /* SeriesDetailsViewController.swift in Sources */,
 				0740DC5027385E5A0050A135 /* UICollectionView+Dequeue.swift in Sources */,
 				0740DC1E273813C00050A135 /* ListSeriesViewController.swift in Sources */,
 				0740DC3927382C380050A135 /* NSObject+ClasName.swift in Sources */,

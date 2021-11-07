@@ -16,7 +16,6 @@ final class ListSeriesPresenter {
     // MARK: Dependencies
     
     weak var viewController: ListSeriesDisplayLogic?
-    
 }
 
 // MARK: ListSeriesPresentationLogic

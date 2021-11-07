@@ -11,7 +11,13 @@ import UIKit
 final class SeriesDetailsConfigurator: SceneFactory {
     
     func resolveViewController() -> UIViewController {
-        return UIViewController()
+        let router = SeriesDetailsRouter()
+        let presenter = SeriesDetailsPresenter()
+        let interactor = SeriesDetailsInteractor(presenter: presenter)
+        let viewController = SeriesDetailsViewController(interactor: interactor, router: router)
+        
+        presenter.viewController = viewController
+        return viewController
     }
 }
 
