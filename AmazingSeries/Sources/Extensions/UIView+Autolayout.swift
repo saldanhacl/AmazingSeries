@@ -11,12 +11,12 @@ import UIKit
 extension UIView {
     func anchor(
         top: NSLayoutYAxisAnchor? = nil,
-        paddingTop: CGFloat = .zero,
         leading: NSLayoutXAxisAnchor? = nil,
-        paddingLeading: CGFloat = .zero,
         bottom : NSLayoutYAxisAnchor? = nil,
-        paddingBottom: CGFloat = .zero,
         trailing: NSLayoutXAxisAnchor? = nil,
+        paddingTop: CGFloat = .zero,
+        paddingLeading: CGFloat = .zero,
+        paddingBottom: CGFloat = .zero,
         paddingTrailing: CGFloat = .zero,
         width: CGFloat = .zero,
         height: CGFloat = .zero
@@ -68,12 +68,12 @@ extension UIView {
     ) {
         anchor(
             top: superview?.topAnchor,
-            paddingTop: paddingTop,
             leading: superview?.leadingAnchor,
-            paddingLeading: paddingLeading,
             bottom: superview?.bottomAnchor,
-            paddingBottom: paddingBottom,
             trailing: superview?.trailingAnchor,
+            paddingTop: paddingTop,
+            paddingLeading: paddingLeading,
+            paddingBottom: paddingBottom,
             paddingTrailing: paddingTrailing
         )
     }

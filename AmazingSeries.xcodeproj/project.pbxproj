@@ -29,6 +29,7 @@
 		0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC47273839080050A135 /* NetworkProtocols.swift */; };
 		0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */; };
 		0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4B27383B060050A135 /* ListSeriesModels.swift */; };
+		0740DC5027385E5A0050A135 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		0740DC47273839080050A135 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
 		0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSeriesWorker.swift; sourceTree = "<group>"; };
 		0740DC4B27383B060050A135 /* ListSeriesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeriesModels.swift; sourceTree = "<group>"; };
+		0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				0740DC3127381AC10050A135 /* UIView+Autolayout.swift */,
 				0740DC3827382C380050A135 /* NSObject+ClasName.swift */,
 				0740DC3C27382EA00050A135 /* UITableView+Dequeue.swift */,
+				0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
 				0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */,
 				0740DC44273830060050A135 /* Config.swift in Sources */,
+				0740DC5027385E5A0050A135 /* UICollectionView+Dequeue.swift in Sources */,
 				0740DC1E273813C00050A135 /* ListSeriesViewController.swift in Sources */,
 				0740DC3927382C380050A135 /* NSObject+ClasName.swift in Sources */,
 			);

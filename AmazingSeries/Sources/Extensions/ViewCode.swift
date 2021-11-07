@@ -31,7 +31,7 @@ class CodedView: UIView, ViewCode {
         setupView()
     }
 
-    public required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("This view cannot be instantiated from IB.")
     }
 
@@ -55,7 +55,31 @@ class CodedTableViewCell: UITableViewCell, ViewCode {
         setupView()
     }
 
-    public required init?(coder: NSCoder) {
+    required init?(coder: NSCoder) {
+        fatalError("This view cannot be instantiated from IB.")
+    }
+
+    // MARK: - Layout Setup
+    
+    func buildHierarchy() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+
+    func setupConstraints() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+}
+
+class CodedCollectionViewCell: UICollectionViewCell, ViewCode {
+    
+    // MARK: - Initialization
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+     required init?(coder: NSCoder) {
         fatalError("This view cannot be instantiated from IB.")
     }
 

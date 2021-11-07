@@ -12,6 +12,12 @@ final class SeriesTableViewCell: CodedTableViewCell {
     
     // MARK: View Elements
     
+    private let posterImageView: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .darkGray
+        return view
+    }()
+    
     private let titleLabel: UILabel = {
         let view = UILabel()
         return view
@@ -20,18 +26,31 @@ final class SeriesTableViewCell: CodedTableViewCell {
     // MARK: Coded View
     
     override func buildHierarchy() {
+        contentView.addSubview(posterImageView)
         contentView.addSubview(titleLabel)
     }
     
     override func setupConstraints() {
+        constrainPosterImageView()
         constrainTitleLabel()
+    }
+    
+    private func constrainPosterImageView() {
+        posterImageView.anchor(
+            top: contentView.topAnchor,
+            leading: contentView.leadingAnchor,
+            bottom: contentView.bottomAnchor,
+            width: 100,
+            height: 140
+        )
     }
     
     private func constrainTitleLabel() {
         titleLabel.anchor(
-            top: contentView.topAnchor,
-            leading: contentView.leadingAnchor,
-            bottom: contentView.bottomAnchor
+            top: posterImageView.topAnchor,
+            leading: posterImageView.trailingAnchor,
+            trailing: contentView.trailingAnchor,
+            paddingLeading: 8.0
         )
     }
     

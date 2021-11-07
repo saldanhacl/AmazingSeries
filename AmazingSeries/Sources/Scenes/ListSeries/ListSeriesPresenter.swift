@@ -23,7 +23,7 @@ final class ListSeriesPresenter {
 
 extension ListSeriesPresenter: ListSeriesPresentationLogic {
     func presentSeriesData(_ data: [ListSeries.Response], append: Bool) {
-        let viewModels: [ListSeries.ViewModel] = data.map { .init(name: $0.name, posterURL: $0.url) }
+        let viewModels: [ListSeries.ViewModel] = data.map { .init(name: $0.name, posterURL: $0.image.medium) }
         append ? viewController?.displayMoreSeries(viewModels) : viewController?.displaySeriesList(viewModels)
     }
 }
