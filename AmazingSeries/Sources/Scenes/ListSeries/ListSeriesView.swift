@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol ListSeriesViewProtocol {
-    
+    func showSeriesList(_ data: [ListSeries.ViewModel])
 }
 
 protocol ListSeriesViewDelegate: AnyObject {
@@ -18,14 +18,13 @@ protocol ListSeriesViewDelegate: AnyObject {
 }
 
 final class ListSeriesView: CodedView {
-    
-    // MARK: Mock
-    
-    var titles: [String] = ["Dexter", "The office"]
-    
     // MARK: Dependencies
     
     weak var delegate: ListSeriesViewDelegate?
+    
+    // MARK: Private properties
+    
+    private var listSeriesViewModels: [ListSeries.ViewModel] = []
     
     // MARK: View Elements
     
@@ -55,13 +54,14 @@ final class ListSeriesView: CodedView {
 
 extension ListSeriesView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        titles.count
+        listSeriesViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: SeriesTableViewCell.self, for: indexPath)
-        let title = titles[indexPath.row]
-        cell.setupData(title: title)
+        let viewModel = listSeriesViewModels[indexPath.row]
+        
+        cell.setupData(title: viewModel.name)
         return cell
     }
 }
@@ -69,5 +69,8 @@ extension ListSeriesView: UITableViewDataSource {
 // MARK: ListSeriesViewProtocol
 
 extension ListSeriesView: ListSeriesViewProtocol {
-    
+    func showSeriesList(_ data: [ListSeries.ViewModel]) {
+        listSeriesViewModels = data
+        tableView.reloadData()
+    }
 }

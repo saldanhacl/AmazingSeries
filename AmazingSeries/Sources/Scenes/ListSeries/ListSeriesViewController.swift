@@ -41,12 +41,18 @@ final class ListSeriesViewController: UIViewController {
         view = ListSeriesView()
         contentView = view as? ListSeriesViewProtocol
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        interactor.onViewDidLoad()
+    }
 }
 
 // MARK: ListSeriesDisplayLogic
 
 extension ListSeriesViewController: ListSeriesDisplayLogic {
     func displaySeriesList(_ data: [ListSeries.ViewModel]) {
-        
+        contentView?.showSeriesList(data)
     }
 }

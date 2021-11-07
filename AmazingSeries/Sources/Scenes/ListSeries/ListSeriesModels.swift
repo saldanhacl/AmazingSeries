@@ -25,4 +25,18 @@ enum ListSeries {
     enum RequestError: Error {
         case failed
     }
+    
+    struct GetSeriesRequest: NetworkRequest {
+        var baseURL: String {
+            Config.seriesAPIUrl
+        }
+        
+        var path: String {
+            "/shows"
+        }
+        
+        var method: HTTPMethod {
+            .get
+        }
+    }
 }

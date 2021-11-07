@@ -9,10 +9,20 @@ import Foundation
 
 @propertyWrapper
 struct Dependency<T> {
-    var wrappedValue: T
-
-    init() {
-        self.wrappedValue = DependencyContainer.resolve()
+    private(set) var resolvedValue: T?
+    
+    public var wrappedValue: T {
+        guard let resolvedValue = resolvedValue else {
+            preconditionFailure("Attempted to resolve \(type(of: self)), but there's nothing registered for this type.")
+        }
+        
+        return resolvedValue
+    }
+    
+    public init() {
+        if let value = DependencyContainer.resolve(forMetaType: T.self) {
+            resolvedValue = value
+        }
     }
 }
 
@@ -20,25 +30,22 @@ final class DependencyContainer {
     private var dependencies = [String: AnyObject]()
     private static var shared = DependencyContainer()
 
-    static func register<T>(_ dependency: T) {
-        shared.register(dependency)
+    static func register<T>(_ dependency: T, forMetaType metaType: T.Type) {
+        shared.register(dependency, metaType)
     }
 
-    static func resolve<T>() -> T {
-        shared.resolve()
+    static func resolve<T>(forMetaType metaType: T.Type) -> T? {
+        shared.resolve(metaType)
     }
 
-    private func register<T>(_ dependency: T) {
-        let key = String(describing: T.self)
+    private func register<T>(_ dependency: T, _ metaType: T.Type) {
+        let key = String(describing: metaType)
         dependencies[key] = dependency as AnyObject
     }
 
-    private func resolve<T>() -> T {
-        let key = String(describing: T.self)
+    private func resolve<T>(_ metaType: T.Type) -> T? {
+        let key = String(describing: metaType)
         let dependency = dependencies[key] as? T
-
-        precondition(dependency != nil, "No dependency found for \(key)! must register a dependency before resolve.")
-
-        return dependency!
+        return dependency
     }
 }

@@ -11,10 +11,11 @@ import UIKit
 final class ListSeriesConfigurator: SceneFactory {
     
     func resolveViewController() -> UIViewController {
-        let presenter = ListSeriesPresenter()
-        let interactor = ListSeriesInteractor(presenter: presenter)
-        let viewController = ListSeriesViewController(interactor: interactor)
+        let getSeriesWorker = GetSeriesWorker()
         
+        let presenter = ListSeriesPresenter()
+        let interactor = ListSeriesInteractor(presenter: presenter, getSeriesWorker: getSeriesWorker)
+        let viewController = ListSeriesViewController(interactor: interactor)
         
         presenter.viewController = viewController
         return viewController

@@ -30,17 +30,21 @@ final class ListSeriesInteractor {
 
 extension ListSeriesInteractor: ListSeriesBusinessLogic {
     func onViewDidLoad() {
-        
+        getSeries()
     }
     
     // MARK: Private methods
-
+    
     private func getSeries() {
         getSeriesWorker.listShows { result in
-            switch result {
-            case let .success(response):
-                
-            case .failure()
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case let .success(response):
+                    self?.presenter.presentSeriesData(response)
+                case .failure:
+                    // TODO: add failure presentation
+                    break
+                }
             }
         }
     }
