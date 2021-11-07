@@ -17,19 +17,32 @@ protocol ListSeriesViewDelegate: AnyObject {
     
 }
 
-final class ListSeriesView: UIView {
+final class ListSeriesView: CodedView {
     
     // MARK: Dependencies
     
     weak var delegate: ListSeriesViewDelegate?
     
-}
-
-// MARK: View Code
-
-extension ListSeriesView: ViewCode {
-    func buildHierarchy() {}
-    func setupConstraints() {}
+    // MARK: View Elements
+    
+    private lazy var tableView: UITableView = {
+        let view = UITableView()
+        return view
+    }()
+    
+    // MARK: Coded View
+    
+    override func buildHierarchy() {
+        addSubview(tableView)
+    }
+    
+    override func setupConstraints() {
+        constrainTableView()
+    }
+    
+    private func constrainTableView() {
+        tableView.fillSuperview()
+    }
 }
 
 // MARK: ListSeriesViewProtocol

@@ -22,3 +22,27 @@ extension ViewCode {
     func setupConstraints() {}
 }
 
+class CodedView: UIView, ViewCode {
+    
+    // MARK: - Initialization
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+
+    public required init?(coder: NSCoder) {
+        fatalError("This view cannot be instantiated from IB.")
+    }
+
+    // MARK: - Layout Setup
+    
+    func buildHierarchy() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+
+    func setupConstraints() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+}
+

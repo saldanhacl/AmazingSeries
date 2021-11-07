@@ -41,12 +41,6 @@ final class ListSeriesViewController: UIViewController {
         view = ListSeriesView()
         contentView = view as? ListSeriesViewProtocol
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = .blue
-    }
 }
 
 // MARK: ListSeriesDisplayLogic

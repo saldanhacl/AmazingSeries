@@ -59,4 +59,22 @@ extension UIView {
             centerYAnchor.constraint(equalTo: anchorY, constant: constant).isActive = true
         }
     }
+    
+    func fillSuperview(
+        paddingTop: CGFloat = .zero,
+        paddingLeading: CGFloat = .zero,
+        paddingBottom: CGFloat = .zero,
+        paddingTrailing: CGFloat = .zero
+    ) {
+        anchor(
+            top: superview?.topAnchor,
+            paddingTop: paddingTop,
+            leading: superview?.leadingAnchor,
+            paddingLeading: paddingLeading,
+            bottom: superview?.bottomAnchor,
+            paddingBottom: paddingBottom,
+            trailing: superview?.trailingAnchor,
+            paddingTrailing: paddingTrailing
+        )
+    }
 }

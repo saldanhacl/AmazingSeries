@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0740DBFB273807780050A135 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DBFA273807780050A135 /* AppDelegate.swift */; };
-		0740DBFD273807780050A135 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DBFC273807780050A135 /* SceneDelegate.swift */; };
 		0740DBFF273807780050A135 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DBFE273807780050A135 /* ViewController.swift */; };
 		0740DC04273807790050A135 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0740DC03273807790050A135 /* Assets.xcassets */; };
 		0740DC07273807790050A135 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0740DC05273807790050A135 /* LaunchScreen.storyboard */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		0740DBF7273807780050A135 /* AmazingSeries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AmazingSeries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0740DBFA273807780050A135 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0740DBFC273807780050A135 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0740DBFE273807780050A135 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0740DC03273807790050A135 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0740DC06273807790050A135 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 				0740DC27273815070050A135 /* Protocols */,
 				0740DC0E273812D60050A135 /* Scenes */,
 				0740DBFA273807780050A135 /* AppDelegate.swift */,
-				0740DBFC273807780050A135 /* SceneDelegate.swift */,
 				0740DBFE273807780050A135 /* ViewController.swift */,
 				0740DC03273807790050A135 /* Assets.xcassets */,
 				0740DC05273807790050A135 /* LaunchScreen.storyboard */,
@@ -203,7 +200,6 @@
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
-				0740DBFD273807780050A135 /* SceneDelegate.swift in Sources */,
 				0740DC1E273813C00050A135 /* ListSeriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
