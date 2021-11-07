@@ -46,3 +46,26 @@ class CodedView: UIView, ViewCode {
     }
 }
 
+class CodedTableViewCell: UITableViewCell, ViewCode {
+    
+    // MARK: - Initialization
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupView()
+    }
+
+    public required init?(coder: NSCoder) {
+        fatalError("This view cannot be instantiated from IB.")
+    }
+
+    // MARK: - Layout Setup
+    
+    func buildHierarchy() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+
+    func setupConstraints() {
+        fatalError("You should override this function in order to setup your CodedView.")
+    }
+}
