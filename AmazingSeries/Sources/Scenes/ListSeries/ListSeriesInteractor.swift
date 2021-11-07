@@ -9,6 +9,7 @@ import Foundation
 
 protocol ListSeriesBusinessLogic {
     func onViewDidLoad()
+    func loadMoreData()
 }
 
 final class ListSeriesInteractor {
@@ -17,6 +18,10 @@ final class ListSeriesInteractor {
     
     private let presenter: ListSeriesPresentationLogic
     private let getSeriesWorker: GetSeriesWorkerProtocol
+    
+    // MARK: Private properties
+    
+    private var currentPage: Int = .zero
     
     // MARK: Initialization
     
@@ -30,19 +35,25 @@ final class ListSeriesInteractor {
 
 extension ListSeriesInteractor: ListSeriesBusinessLogic {
     func onViewDidLoad() {
-        getSeries(page: 0)
+        getSeries(page: currentPage)
+    }
+    
+    func loadMoreData() {
+        currentPage += 1
+        getSeries(page: currentPage, append: true)
     }
     
     // MARK: Private methods
     
-    private func getSeries(page: Int) {
+    private func getSeries(page: Int, append: Bool = false) {
         getSeriesWorker.listShows(page: page) { result in
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case let .success(response):
-                    self?.presenter.presentSeriesData(response)
+                    self?.presenter.presentSeriesData(response, append: append)
                 case .failure:
                     // TODO: add failure presentation
+                    self?.currentPage -= 1
                     break
                 }
             }

@@ -11,6 +11,7 @@ import UIKit
 
 protocol ListSeriesDisplayLogic: AnyObject {
     func displaySeriesList(_ data: [ListSeries.ViewModel])
+    func displayMoreSeries(_ data: [ListSeries.ViewModel])
 }
 
 final class ListSeriesViewController: UIViewController {
@@ -40,6 +41,7 @@ final class ListSeriesViewController: UIViewController {
     override func loadView() {
         view = ListSeriesView()
         contentView = view as? ListSeriesViewProtocol
+        contentView?.delegate = self
     }
     
     override func viewDidLoad() {
@@ -54,5 +56,17 @@ final class ListSeriesViewController: UIViewController {
 extension ListSeriesViewController: ListSeriesDisplayLogic {
     func displaySeriesList(_ data: [ListSeries.ViewModel]) {
         contentView?.showSeriesList(data)
+    }
+    
+    func displayMoreSeries(_ data: [ListSeries.ViewModel]) {
+        contentView?.appendSeriesData(data)
+    }
+}
+
+// MARK: ListSeriesViewDelegate
+
+extension ListSeriesViewController: ListSeriesViewDelegate {
+    func fetchMoredData() {
+        interactor.loadMoreData()
     }
 }

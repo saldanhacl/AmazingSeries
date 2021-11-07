@@ -10,11 +10,14 @@ import UIKit
 
 
 protocol ListSeriesViewProtocol {
+    var delegate: ListSeriesViewDelegate? { get set }
+    
     func showSeriesList(_ data: [ListSeries.ViewModel])
+    func appendSeriesData(_ data: [ListSeries.ViewModel])
 }
 
 protocol ListSeriesViewDelegate: AnyObject {
-    
+    func fetchMoredData()
 }
 
 final class ListSeriesView: CodedView {
@@ -31,6 +34,7 @@ final class ListSeriesView: CodedView {
     private lazy var tableView: UITableView = {
         let view = UITableView()
         view.dataSource = self
+        view.delegate = self
         view.register(SeriesTableViewCell.self, forCellReuseIdentifier: SeriesTableViewCell.className)
         return view
     }()
@@ -66,11 +70,29 @@ extension ListSeriesView: UITableViewDataSource {
     }
 }
 
+// MARK: UITableViewDelegate
+
+extension ListSeriesView: UITableViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if maximumOffset - currentOffset <= 2 {
+            delegate?.fetchMoredData()
+        }
+    }
+}
+
 // MARK: ListSeriesViewProtocol
 
 extension ListSeriesView: ListSeriesViewProtocol {
     func showSeriesList(_ data: [ListSeries.ViewModel]) {
         listSeriesViewModels = data
+        tableView.reloadData()
+    }
+    
+    func appendSeriesData(_ data: [ListSeries.ViewModel]) {
+        listSeriesViewModels.append(contentsOf: data)
         tableView.reloadData()
     }
 }
