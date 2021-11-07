@@ -10,16 +10,19 @@ import UIKit
 protocol ViewCode {
     func buildHierarchy()
     func setupConstraints()
+    func aditionalConfiguration()
 }
 
 extension ViewCode {
     func setupView() {
         buildHierarchy()
         setupConstraints()
+        aditionalConfiguration()
     }
 
     func buildHierarchy() {}
     func setupConstraints() {}
+    func aditionalConfiguration() {}
 }
 
 class CodedView: UIView, ViewCode {
@@ -44,6 +47,8 @@ class CodedView: UIView, ViewCode {
     func setupConstraints() {
         fatalError("You should override this function in order to setup your CodedView.")
     }
+    
+    func aditionalConfiguration() {}
 }
 
 class CodedTableViewCell: UITableViewCell, ViewCode {

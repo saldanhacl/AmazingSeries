@@ -63,11 +63,16 @@ final class ListSeriesView: CodedView {
         constrainTableView()
     }
     
+    override func aditionalConfiguration() {
+        backgroundColor = .white
+    }
+    
     private func constrainSearchView() {
         searchView.anchor(
             top: topAnchor,
             leading: leadingAnchor,
-            trailing: trailingAnchor
+            trailing: trailingAnchor,
+            paddingTop: 12.0
         )
     }
     
