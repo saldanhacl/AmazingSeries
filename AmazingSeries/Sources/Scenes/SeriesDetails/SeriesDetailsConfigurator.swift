@@ -8,12 +8,20 @@
 import Foundation
 import UIKit
 
-final class SeriesDetailsConfigurator: SceneFactory {
+struct SeriesDetailsParameters {
+    let id: Int
+}
+
+protocol SeriesDetailsConfiguratorProtocol {
+    func resolveViewController(parameters: SeriesDetailsParameters) -> UIViewController
+}
+
+final class SeriesDetailsConfigurator: SeriesDetailsConfiguratorProtocol {
     
-    func resolveViewController() -> UIViewController {
+    func resolveViewController(parameters: SeriesDetailsParameters) -> UIViewController {
         let router = SeriesDetailsRouter()
         let presenter = SeriesDetailsPresenter()
-        let interactor = SeriesDetailsInteractor(presenter: presenter)
+        let interactor = SeriesDetailsInteractor(presenter: presenter, seriesId: parameters.id)
         let viewController = SeriesDetailsViewController(interactor: interactor, router: router)
         
         presenter.viewController = viewController

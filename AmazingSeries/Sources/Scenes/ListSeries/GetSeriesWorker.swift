@@ -23,9 +23,7 @@ final class GetSeriesWorker: GetSeriesWorkerProtocol {
     
     func listShows(page: Int, handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
     ) -> Void) {
-        var request = ListSeries.GetSeriesRequest()
-        request.queryItems = ["page": String(page)]
-        
+        let request = API.listSeries(queryParams: ["page": String(page)])
         networkManager.fetch(of: [ListSeries.Response].self, for: request) { result in
             switch result {
             case let .success(data):

@@ -36,7 +36,7 @@ class NetworkManager: NetworkManagerProtocol {
         let urlString: String = "\(request.baseURL)\(request.path)"
         guard var urlComponent = URLComponents(string: urlString) else { preconditionFailure("Invalid URL") }
         
-        let queryItems: [URLQueryItem]? = request.queryItems?.compactMap { URLQueryItem(name: $0.key, value: $0.value) }
+        let queryItems: [URLQueryItem]? = request.queryItems.map { URLQueryItem(name: $0.key, value: $0.value) }
         urlComponent.queryItems = queryItems
 
         guard let url = urlComponent.url else { preconditionFailure("Failed to build request") }

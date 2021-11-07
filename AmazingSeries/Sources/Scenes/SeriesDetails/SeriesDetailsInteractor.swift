@@ -14,17 +14,27 @@ final class SeriesDetailsInteractor {
     // MARK: Dependencies
     
     private let presenter: SeriesDetailsPresentationLogic
+    private let seriesId: Int
     
     
     // MARK: Initialization
     
-    init(presenter: SeriesDetailsPresentationLogic) {
+    init(presenter: SeriesDetailsPresentationLogic, seriesId: Int) {
         self.presenter = presenter
+        self.seriesId = seriesId
     }
 }
 
 // MARK: ListSeriesBusinessLogic
 
 extension SeriesDetailsInteractor: SeriesDetailsBusinessLogic {
-    func onViewDidLoad() {}
+    func onViewDidLoad() {
+        
+    }
+    
+    // MARK: Private methods
+    
+    private func loadSeriesDetails() {
+        
+    }
 }

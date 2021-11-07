@@ -20,11 +20,11 @@ final class ListSeriesRouter {
     
     // MARK: Private properties
     
-    private let sceneFactory: SceneFactory
+    private let sceneFactory: SeriesDetailsConfiguratorProtocol
     
     // MARK: Initialization
     
-    init(sceneFactory: SceneFactory) {
+    init(sceneFactory: SeriesDetailsConfiguratorProtocol) {
         self.sceneFactory = sceneFactory
     }
 }
@@ -33,7 +33,7 @@ final class ListSeriesRouter {
 
 extension ListSeriesRouter: ListSeriesRoutingLogic {
     func goToSeriesDetails(id: Int) {
-        let destination = sceneFactory.resolveViewController()
+        let destination = sceneFactory.resolveViewController(parameters: .init(id: id))
         viewController?.navigationController?.pushViewController(destination, animated: true)
     }
 }

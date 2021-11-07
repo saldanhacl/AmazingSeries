@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class ListSeriesConfigurator: SceneFactory {
+protocol ListSeriesConfiguratorProtocol {
+    func resolveViewController() -> UIViewController
+}
+
+final class ListSeriesConfigurator: ListSeriesConfiguratorProtocol {
 
     func resolveViewController() -> UIViewController {
         let getSeriesWorker = GetSeriesWorker()
