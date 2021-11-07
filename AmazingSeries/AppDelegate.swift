@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func registerDependencies() {
         DependencyContainer.register(NetworkManager(), forMetaType: NetworkManagerProtocol.self)
+        DependencyContainer.register(ImageDownloader(), forMetaType: ImageDownloaderProtocol.self)
     }
 }
 

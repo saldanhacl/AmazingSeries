@@ -10,6 +10,10 @@ import UIKit
 
 final class SeriesTableViewCell: CodedTableViewCell {
     
+    // MARK: Dependencies
+    
+    @Dependency private var imageDownloader: ImageDownloaderProtocol
+    
     // MARK: View Elements
     
     private let posterImageView: UIImageView = {
@@ -56,7 +60,8 @@ final class SeriesTableViewCell: CodedTableViewCell {
     
     // MARK: Internal methods
     
-    func setupData(title: String) {
+    func setupData(title: String, posterImageURL: String) {
         titleLabel.text = title
+        posterImageView.fetchImage(with: posterImageURL, placeholder: nil, imageDownloader: imageDownloader)
     }
 }

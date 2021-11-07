@@ -92,7 +92,7 @@ extension ListSeriesView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(with: SeriesTableViewCell.self, for: indexPath)
         let viewModel = filteredListSeriesViewModels[indexPath.row]
         
-        cell.setupData(title: viewModel.name)
+        cell.setupData(title: viewModel.name, posterImageURL: viewModel.posterURL)
         return cell
     }
 }

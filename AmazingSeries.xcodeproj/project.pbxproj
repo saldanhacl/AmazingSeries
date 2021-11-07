@@ -30,6 +30,9 @@
 		0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */; };
 		0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4B27383B060050A135 /* ListSeriesModels.swift */; };
 		0740DC5027385E5A0050A135 /* UICollectionView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */; };
+		0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC512738678F0050A135 /* ImageDownloaderProtocol.swift */; };
+		0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC542738687D0050A135 /* ImageDownloader.swift */; };
+		0740DC57273869F50050A135 /* UIImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC56273869F50050A135 /* UIImageView+Network.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +62,9 @@
 		0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSeriesWorker.swift; sourceTree = "<group>"; };
 		0740DC4B27383B060050A135 /* ListSeriesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeriesModels.swift; sourceTree = "<group>"; };
 		0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Dequeue.swift"; sourceTree = "<group>"; };
+		0740DC512738678F0050A135 /* ImageDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderProtocol.swift; sourceTree = "<group>"; };
+		0740DC542738687D0050A135 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		0740DC56273869F50050A135 /* UIImageView+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Network.swift"; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B774945FC288380FD211A726 /* Pods-AmazingSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.release.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 			children = (
 				0740DC28273815130050A135 /* ConfiguratorProtocol.swift */,
 				0740DC47273839080050A135 /* NetworkProtocols.swift */,
+				0740DC512738678F0050A135 /* ImageDownloaderProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -147,6 +154,7 @@
 				0740DC3827382C380050A135 /* NSObject+ClasName.swift */,
 				0740DC3C27382EA00050A135 /* UITableView+Dequeue.swift */,
 				0740DC4F27385E5A0050A135 /* UICollectionView+Dequeue.swift */,
+				0740DC56273869F50050A135 /* UIImageView+Network.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 		0740DC4127382FEA0050A135 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				0740DC53273868730050A135 /* Helpers */,
 				0740DC3E27382F1A0050A135 /* Service */,
 				0740DC2E2738184A0050A135 /* Extensions */,
 				0740DC27273815070050A135 /* Protocols */,
@@ -181,13 +190,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		0740DC53273868730050A135 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0740DC542738687D0050A135 /* ImageDownloader.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		315FE9C7A3B6997D310F0D3C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */,
 				B774945FC288380FD211A726 /* Pods-AmazingSeries.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -316,7 +332,9 @@
 				0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */,
 				0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */,
 				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
+				0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */,
 				0740DBFF273807780050A135 /* ViewController.swift in Sources */,
+				0740DC57273869F50050A135 /* UIImageView+Network.swift in Sources */,
 				0740DC46273833DA0050A135 /* DependencyInjection.swift in Sources */,
 				0740DBFB273807780050A135 /* AppDelegate.swift in Sources */,
 				0740DC2B273817550050A135 /* ListSeriesView.swift in Sources */,
@@ -327,6 +345,7 @@
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
 				0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */,
+				0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */,
 				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
 				0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */,
