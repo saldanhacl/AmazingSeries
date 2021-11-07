@@ -1,0 +1,6 @@
+framework module Pods_AmazingSeries {
+  umbrella header "Pods-AmazingSeries-umbrella.h"
+
+  export *
+  module * { export * }
+}
