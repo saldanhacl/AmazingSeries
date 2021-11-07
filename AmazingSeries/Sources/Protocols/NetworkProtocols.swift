@@ -16,6 +16,7 @@ protocol NetworkRequest {
     var baseURL: String { get }
     var path: String { get }
     var method: HTTPMethod { get }
+    var queryItems: [String: String]? { get }
 }
 
 protocol NetworkManagerProtocol {

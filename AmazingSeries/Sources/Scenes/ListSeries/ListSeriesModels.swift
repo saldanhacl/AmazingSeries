@@ -38,5 +38,7 @@ enum ListSeries {
         var method: HTTPMethod {
             .get
         }
+        
+        var queryItems: [String: String]?
     }
 }

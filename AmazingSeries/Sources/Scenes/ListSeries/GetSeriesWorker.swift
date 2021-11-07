@@ -9,7 +9,7 @@ import Foundation
 
 
 protocol GetSeriesWorkerProtocol {
-    func listShows(handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
+    func listShows(page: Int, handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
     ) -> Void)
 }
 
@@ -21,9 +21,11 @@ final class GetSeriesWorker: GetSeriesWorkerProtocol {
     
     // MARK: GetSeriesWorkerProtocol
     
-    func listShows(handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
+    func listShows(page: Int, handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
     ) -> Void) {
-        let request = ListSeries.GetSeriesRequest()
+        var request = ListSeries.GetSeriesRequest()
+        request.queryItems = ["page": String(page)]
+        
         networkManager.fetch(of: [ListSeries.Response].self, for: request) { result in
             switch result {
             case let .success(data):
