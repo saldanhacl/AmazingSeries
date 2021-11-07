@@ -20,6 +20,7 @@
 		0740DC2B273817550050A135 /* ListSeriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC2A273817550050A135 /* ListSeriesView.swift */; };
 		0740DC302738185C0050A135 /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC2F2738185C0050A135 /* ViewCode.swift */; };
 		0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC3127381AC10050A135 /* UIView+Autolayout.swift */; };
+		0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC33273820280050A135 /* ListSeriesRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		0740DC2A273817550050A135 /* ListSeriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeriesView.swift; sourceTree = "<group>"; };
 		0740DC2F2738185C0050A135 /* ViewCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		0740DC3127381AC10050A135 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
+		0740DC33273820280050A135 /* ListSeriesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeriesRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				0740DC212738145B0050A135 /* ListSeriesPresenter.swift */,
 				0740DC25273814CB0050A135 /* ListSeriesConfigurator.swift */,
 				0740DC2A273817550050A135 /* ListSeriesView.swift */,
+				0740DC33273820280050A135 /* ListSeriesRouter.swift */,
 			);
 			path = ListSeries;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				0740DC20273814330050A135 /* ListSeriesInteractor.swift in Sources */,
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
+				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
 				0740DBFD273807780050A135 /* SceneDelegate.swift in Sources */,
 				0740DC1E273813C00050A135 /* ListSeriesViewController.swift in Sources */,
 			);
