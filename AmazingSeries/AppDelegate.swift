@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func startScene() {
         let sceneFactory = ListSeriesConfigurator()
-        window?.rootViewController = sceneFactory.resolveViewController()
+        let navigationController = UINavigationController(rootViewController: sceneFactory.resolveViewController())
+
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     

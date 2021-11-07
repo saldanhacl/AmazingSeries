@@ -17,6 +17,7 @@ protocol ListSeriesViewProtocol {
 
 protocol ListSeriesViewDelegate: AnyObject {
     func fetchMoredData()
+    func didSelectSeries(id: Int)
 }
 
 final class ListSeriesView: CodedView {
@@ -112,6 +113,11 @@ extension ListSeriesView: UITableViewDelegate {
         if maximumOffset - currentOffset <= 2 {
             delegate?.fetchMoredData()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let seriesId = filteredListSeriesViewModels[indexPath.row].id
+        delegate?.didSelectSeries(id: seriesId)
     }
 }
 

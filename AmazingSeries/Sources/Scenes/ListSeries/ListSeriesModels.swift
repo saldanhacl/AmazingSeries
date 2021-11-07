@@ -13,6 +13,7 @@ enum ListSeries {
     }
     
     struct Response: Codable {
+        let id: Int
         let name: String
         let image: Image
         
@@ -23,6 +24,7 @@ enum ListSeries {
     }
     
     struct ViewModel {
+        let id: Int
         let name: String
         let posterURL: String
     }

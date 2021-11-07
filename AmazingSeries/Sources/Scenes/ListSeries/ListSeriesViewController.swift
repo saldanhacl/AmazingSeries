@@ -19,6 +19,7 @@ final class ListSeriesViewController: UIViewController {
     // MARK: Dependencies
     
     private let interactor: ListSeriesBusinessLogic
+    private let router: ListSeriesRoutingLogic
     
     // MARK: - Private properties
     
@@ -26,8 +27,9 @@ final class ListSeriesViewController: UIViewController {
     
     // MARK: Initialization
     
-    init(interactor: ListSeriesBusinessLogic) {
+    init(interactor: ListSeriesBusinessLogic, router: ListSeriesRoutingLogic) {
         self.interactor = interactor
+        self.router = router
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,5 +70,9 @@ extension ListSeriesViewController: ListSeriesDisplayLogic {
 extension ListSeriesViewController: ListSeriesViewDelegate {
     func fetchMoredData() {
         interactor.loadMoreData()
+    }
+    
+    func didSelectSeries(id: Int) {
+        router.goToSeriesDetails(id: id)
     }
 }

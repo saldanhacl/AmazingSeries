@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ListSeriesRoutingLogic {
-    
+    func goToSeriesDetails(id: Int)
 }
 
 final class ListSeriesRouter {
@@ -32,5 +32,8 @@ final class ListSeriesRouter {
 // MARK: ListSeriesRoutingLogic
 
 extension ListSeriesRouter: ListSeriesRoutingLogic {
-    
+    func goToSeriesDetails(id: Int) {
+        let destination = sceneFactory.resolveViewController()
+        viewController?.navigationController?.pushViewController(destination, animated: true)
+    }
 }
