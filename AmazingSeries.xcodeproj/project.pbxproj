@@ -23,6 +23,13 @@
 		0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC362738298C0050A135 /* SeriesTableViewCell.swift */; };
 		0740DC3927382C380050A135 /* NSObject+ClasName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC3827382C380050A135 /* NSObject+ClasName.swift */; };
 		0740DC3D27382EA00050A135 /* UITableView+Dequeue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC3C27382EA00050A135 /* UITableView+Dequeue.swift */; };
+		0740DC4027382F280050A135 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC3F27382F280050A135 /* NetworkManager.swift */; };
+		0740DC44273830060050A135 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC43273830060050A135 /* Config.swift */; };
+		0740DC46273833DA0050A135 /* DependencyInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC45273833DA0050A135 /* DependencyInjection.swift */; };
+		0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC47273839080050A135 /* NetworkProtocols.swift */; };
+		0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */; };
+		0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4B27383B060050A135 /* ListSeriesModels.swift */; };
+		0740DC4E27383F9C0050A135 /* GetSeriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC4D27383F9C0050A135 /* GetSeriesRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +51,13 @@
 		0740DC362738298C0050A135 /* SeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesTableViewCell.swift; sourceTree = "<group>"; };
 		0740DC3827382C380050A135 /* NSObject+ClasName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClasName.swift"; sourceTree = "<group>"; };
 		0740DC3C27382EA00050A135 /* UITableView+Dequeue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Dequeue.swift"; sourceTree = "<group>"; };
+		0740DC3F27382F280050A135 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0740DC43273830060050A135 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		0740DC45273833DA0050A135 /* DependencyInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjection.swift; sourceTree = "<group>"; };
+		0740DC47273839080050A135 /* NetworkProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocols.swift; sourceTree = "<group>"; };
+		0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSeriesWorker.swift; sourceTree = "<group>"; };
+		0740DC4B27383B060050A135 /* ListSeriesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeriesModels.swift; sourceTree = "<group>"; };
+		0740DC4D27383F9C0050A135 /* GetSeriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSeriesRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,14 +90,11 @@
 		0740DBF9273807780050A135 /* AmazingSeries */ = {
 			isa = PBXGroup;
 			children = (
-				0740DC2E2738184A0050A135 /* Extensions */,
-				0740DC27273815070050A135 /* Protocols */,
-				0740DC0E273812D60050A135 /* Scenes */,
+				0740DC4227382FF40050A135 /* Resources */,
+				0740DC4127382FEA0050A135 /* Sources */,
 				0740DBFA273807780050A135 /* AppDelegate.swift */,
 				0740DBFE273807780050A135 /* ViewController.swift */,
-				0740DC03273807790050A135 /* Assets.xcassets */,
 				0740DC05273807790050A135 /* LaunchScreen.storyboard */,
-				0740DC08273807790050A135 /* Info.plist */,
 			);
 			path = AmazingSeries;
 			sourceTree = "<group>";
@@ -99,13 +110,16 @@
 		0740DC1C2738136D0050A135 /* ListSeries */ = {
 			isa = PBXGroup;
 			children = (
-				0740DC352738296D0050A135 /* Cell */,
+				0740DC362738298C0050A135 /* SeriesTableViewCell.swift */,
 				0740DC1D273813C00050A135 /* ListSeriesViewController.swift */,
 				0740DC1F273814330050A135 /* ListSeriesInteractor.swift */,
 				0740DC212738145B0050A135 /* ListSeriesPresenter.swift */,
 				0740DC25273814CB0050A135 /* ListSeriesConfigurator.swift */,
 				0740DC2A273817550050A135 /* ListSeriesView.swift */,
 				0740DC33273820280050A135 /* ListSeriesRouter.swift */,
+				0740DC4927383A8D0050A135 /* GetSeriesWorker.swift */,
+				0740DC4B27383B060050A135 /* ListSeriesModels.swift */,
+				0740DC4D27383F9C0050A135 /* GetSeriesRequest.swift */,
 			);
 			path = ListSeries;
 			sourceTree = "<group>";
@@ -114,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				0740DC28273815130050A135 /* ConfiguratorProtocol.swift */,
+				0740DC47273839080050A135 /* NetworkProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -129,12 +144,34 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0740DC352738296D0050A135 /* Cell */ = {
+		0740DC3E27382F1A0050A135 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				0740DC362738298C0050A135 /* SeriesTableViewCell.swift */,
+				0740DC3F27382F280050A135 /* NetworkManager.swift */,
+				0740DC45273833DA0050A135 /* DependencyInjection.swift */,
 			);
-			path = Cell;
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0740DC4127382FEA0050A135 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0740DC3E27382F1A0050A135 /* Service */,
+				0740DC2E2738184A0050A135 /* Extensions */,
+				0740DC27273815070050A135 /* Protocols */,
+				0740DC0E273812D60050A135 /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		0740DC4227382FF40050A135 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0740DC03273807790050A135 /* Assets.xcassets */,
+				0740DC08273807790050A135 /* Info.plist */,
+				0740DC43273830060050A135 /* Config.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,8 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */,
 				0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */,
+				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
 				0740DBFF273807780050A135 /* ViewController.swift in Sources */,
+				0740DC46273833DA0050A135 /* DependencyInjection.swift in Sources */,
 				0740DBFB273807780050A135 /* AppDelegate.swift in Sources */,
 				0740DC2B273817550050A135 /* ListSeriesView.swift in Sources */,
 				0740DC3D27382EA00050A135 /* UITableView+Dequeue.swift in Sources */,
@@ -217,8 +257,12 @@
 				0740DC20273814330050A135 /* ListSeriesInteractor.swift in Sources */,
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
+				0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */,
+				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
+				0740DC4E27383F9C0050A135 /* GetSeriesRequest.swift in Sources */,
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,
 				0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */,
+				0740DC44273830060050A135 /* Config.swift in Sources */,
 				0740DC1E273813C00050A135 /* ListSeriesViewController.swift in Sources */,
 				0740DC3927382C380050A135 /* NSObject+ClasName.swift in Sources */,
 			);
@@ -363,7 +407,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NBU5KYTB66;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AmazingSeries/Info.plist;
+				INFOPLIST_FILE = AmazingSeries/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -376,6 +420,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.challenge.AmazingSeries;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERIES_API_URL = " https://api.tvmaze.com";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -391,7 +436,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NBU5KYTB66;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AmazingSeries/Info.plist;
+				INFOPLIST_FILE = AmazingSeries/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -404,6 +449,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.challenge.AmazingSeries;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SERIES_API_URL = " https://api.tvmaze.com";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

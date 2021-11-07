@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        registerDependencies()
         startScene()
         
         return true
@@ -25,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sceneFactory = ListSeriesConfigurator()
         window?.rootViewController = sceneFactory.resolveViewController()
         window?.makeKeyAndVisible()
+    }
+    
+    private func registerDependencies() {
+        DependencyContainer.register(NetworkManager())
     }
 }
 

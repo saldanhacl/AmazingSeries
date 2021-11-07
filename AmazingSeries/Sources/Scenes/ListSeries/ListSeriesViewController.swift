@@ -10,7 +10,7 @@ import UIKit
 
 
 protocol ListSeriesDisplayLogic: AnyObject {
-    
+    func displaySeriesList(_ data: [ListSeries.ViewModel])
 }
 
 final class ListSeriesViewController: UIViewController {
@@ -46,5 +46,7 @@ final class ListSeriesViewController: UIViewController {
 // MARK: ListSeriesDisplayLogic
 
 extension ListSeriesViewController: ListSeriesDisplayLogic {
-    
+    func displaySeriesList(_ data: [ListSeries.ViewModel]) {
+        
+    }
 }
