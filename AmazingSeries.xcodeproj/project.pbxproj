@@ -40,6 +40,8 @@
 		0740DC64273873910050A135 /* SeriesDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC63273873910050A135 /* SeriesDetailsRouter.swift */; };
 		0740DC66273876430050A135 /* SeriesDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC65273876430050A135 /* SeriesDetailsModels.swift */; };
 		0740DC68273878290050A135 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC67273878290050A135 /* APIService.swift */; };
+		0740DC6A27387D820050A135 /* GetSeriesDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC6927387D820050A135 /* GetSeriesDetailsWorker.swift */; };
+		0740DC6C273881440050A135 /* DetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC6B273881440050A135 /* DetailHeaderTableViewCell.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		0740DC63273873910050A135 /* SeriesDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsRouter.swift; sourceTree = "<group>"; };
 		0740DC65273876430050A135 /* SeriesDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesDetailsModels.swift; sourceTree = "<group>"; };
 		0740DC67273878290050A135 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		0740DC6927387D820050A135 /* GetSeriesDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSeriesDetailsWorker.swift; sourceTree = "<group>"; };
+		0740DC6B273881440050A135 /* DetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B774945FC288380FD211A726 /* Pods-AmazingSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.release.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +227,8 @@
 				0740DC61273872930050A135 /* SeriesDetailsView.swift */,
 				0740DC63273873910050A135 /* SeriesDetailsRouter.swift */,
 				0740DC65273876430050A135 /* SeriesDetailsModels.swift */,
+				0740DC6927387D820050A135 /* GetSeriesDetailsWorker.swift */,
+				0740DC6B273881440050A135 /* DetailHeaderTableViewCell.swift */,
 			);
 			path = SeriesDetails;
 			sourceTree = "<group>";
@@ -360,8 +366,10 @@
 			files = (
 				0740DC4C27383B060050A135 /* ListSeriesModels.swift in Sources */,
 				0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */,
+				0740DC6A27387D820050A135 /* GetSeriesDetailsWorker.swift in Sources */,
 				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
 				0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */,
+				0740DC6C273881440050A135 /* DetailHeaderTableViewCell.swift in Sources */,
 				0740DC5C2738727F0050A135 /* SeriesDetailsInteractor.swift in Sources */,
 				0740DBFF273807780050A135 /* ViewController.swift in Sources */,
 				0740DC5A273871800050A135 /* SeriesDetailsConfigurator.swift in Sources */,

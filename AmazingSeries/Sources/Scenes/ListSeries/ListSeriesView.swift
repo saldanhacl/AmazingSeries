@@ -44,7 +44,7 @@ final class ListSeriesView: CodedView {
         return view
     }()
     
-    private lazy var seriesCollectionView: UITableView = {
+    private lazy var seriesTableView: UITableView = {
         let view = UITableView()
         view.dataSource = self
         view.delegate = self
@@ -56,7 +56,7 @@ final class ListSeriesView: CodedView {
     
     override func buildHierarchy() {
         addSubview(searchView)
-        addSubview(seriesCollectionView)
+        addSubview(seriesTableView)
     }
     
     override func setupConstraints() {
@@ -73,12 +73,12 @@ final class ListSeriesView: CodedView {
             top: topAnchor,
             leading: leadingAnchor,
             trailing: trailingAnchor,
-            paddingTop: 12.0
+            paddingTop: 60
         )
     }
     
     private func constrainTableView() {
-        seriesCollectionView.anchor(
+        seriesTableView.anchor(
             top: searchView.bottomAnchor,
             leading: leadingAnchor,
             bottom: bottomAnchor,
@@ -129,7 +129,7 @@ extension ListSeriesView: UISearchBarDelegate {
             item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
         }
         
-        seriesCollectionView.reloadData()
+        seriesTableView.reloadData()
     }
 }
 
@@ -138,11 +138,11 @@ extension ListSeriesView: UISearchBarDelegate {
 extension ListSeriesView: ListSeriesViewProtocol {
     func showSeriesList(_ data: [ListSeries.ViewModel]) {
         listSeriesViewModels = data
-        seriesCollectionView.reloadData()
+        seriesTableView.reloadData()
     }
     
     func appendSeriesData(_ data: [ListSeries.ViewModel]) {
         listSeriesViewModels.append(contentsOf: data)
-        seriesCollectionView.reloadData()
+        seriesTableView.reloadData()
     }
 }

@@ -33,7 +33,7 @@ enum SeriesDetails {
         let name: String
         let posterURL: String
         let schedule: String
-        let genres: [String]
+        let genres: String
         let summary: String
     }
 }

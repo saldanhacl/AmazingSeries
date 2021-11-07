@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol GetSeriesWorkerProtocol {
     func listShows(page: Int, handle: @escaping (Result<[ListSeries.Response], ListSeries.RequestError>
     ) -> Void)

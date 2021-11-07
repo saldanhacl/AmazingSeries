@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SeriesDetailsPresentationLogic {
-    
+    func presentData(_ data: SeriesDetails.Response)
 }
 
 final class SeriesDetailsPresenter {
@@ -21,5 +21,15 @@ final class SeriesDetailsPresenter {
 // MARK: SeriesDetailsPresentationLogic
 
 extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
-    
+    func presentData(_ data: SeriesDetails.Response) {
+        let viewModel = SeriesDetails.ViewModel(
+            name: data.name,
+            posterURL: data.image.original,
+            schedule: "Every \(data.schedule.days.joined(separator: ", ")) at \(data.schedule.time)",
+            genres: data.genres.joined(separator: " - "),
+            summary: data.summary
+        )
+        
+        viewController?.displayData(viewModel)
+    }
 }
