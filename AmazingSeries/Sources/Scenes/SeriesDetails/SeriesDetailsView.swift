@@ -9,12 +9,16 @@ import UIKit
 
 protocol SeriesDetailsViewProtocol {
     func showData(_ data: SeriesDetails.ViewModel)
+    func showSeasonsData(_ data: [Episodes.ViewModel.Season])
 }
 
 final class SeriesDetailsView: CodedView {
     
     enum Section: Int, CaseIterable {
         case header
+        case summary
+        case schedule
+        case seasons
     }
     
     // MARK: View Elements
@@ -22,13 +26,20 @@ final class SeriesDetailsView: CodedView {
     private lazy var pageTableView: UITableView = {
         let view = UITableView()
         view.dataSource = self
+        view.delegate = self
+        view.separatorStyle = .none
+        view.allowsSelection = false
+        view.sectionFooterHeight = .zero
         view.register(DetailHeaderTableViewCell.self, forCellReuseIdentifier: DetailHeaderTableViewCell.className)
+        view.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: DetailDescriptionTableViewCell.className)
+        view.register(DetailEpisodesTableViewCell.self, forCellReuseIdentifier: DetailEpisodesTableViewCell.className)
         return view
     }()
     
     // MARK: Private properties
     
-    private var viewModel: SeriesDetails.ViewModel?
+    private var detailsViewModel: SeriesDetails.ViewModel = .empty()
+    private var seasonsViewModel: [Episodes.ViewModel.Season] = []
     
     // MARK: Coded View
     
@@ -40,8 +51,15 @@ final class SeriesDetailsView: CodedView {
         constrainPageTableView()
     }
     
+    override func aditionalConfiguration() {
+        backgroundColor = .white
+    }
+    
     private func constrainPageTableView() {
-        pageTableView.fillSuperview()
+        pageTableView.fillSuperview(
+            paddingLeading: 16.0,
+            paddingTrailing: 16.0
+        )
     }
 }
 
@@ -55,8 +73,10 @@ extension SeriesDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)
         switch section {
-        case .header:
+        case .header, .summary, .schedule:
             return 1
+        case .seasons:
+            return seasonsViewModel.count
         case .none:
             return .zero
         }
@@ -70,25 +90,65 @@ extension SeriesDetailsView: UITableViewDataSource {
     // MARK: Private methods
     
     private func getCellFor(_ indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = viewModel else { return UITableViewCell() }
         let section = Section(rawValue: indexPath.section)
         switch section {
         case .header:
             let cell = pageTableView.dequeueReusableCell(with: DetailHeaderTableViewCell.self, for: indexPath)
-            cell.setupData(title: viewModel.name, genres: viewModel.genres, imageURL: viewModel.posterURL)
+            cell.setupData(title: detailsViewModel.name, genres: detailsViewModel.genres, imageURL: detailsViewModel.posterURL)
+            return cell
+        case .summary:
+            let cell = pageTableView.dequeueReusableCell(with: DetailDescriptionTableViewCell.self, for: indexPath)
+            cell.setupData(description: detailsViewModel.summary)
+            return cell
+        case .schedule:
+            let cell = pageTableView.dequeueReusableCell(with: DetailDescriptionTableViewCell.self, for: indexPath)
+            cell.setupData(description: detailsViewModel.schedule)
+            return cell
+        case .seasons:
+            let seasonViewModel = seasonsViewModel[indexPath.row]
+            let cell = pageTableView.dequeueReusableCell(with: DetailEpisodesTableViewCell.self, for: indexPath)
+            cell.setupData(title: seasonViewModel.name)
             return cell
         default:
             return UITableViewCell()
         }
     }
-    
 }
 
+// MARK: UITableViewDelegate
+
+extension SeriesDetailsView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let section = Section(rawValue: section)
+        let view = DetailSectionHeaderView()
+        let title: String
+
+        switch section {
+        case .summary:
+            title = "Summary"
+        case .schedule:
+            title = "Schedule"
+        case .seasons:
+            title = "Episodes"
+        default:
+            return nil
+        }
+        
+        view.setupData(title: title)
+        return view
+    }
+}
+    
 // MARK: SeriesDetailsViewProtocol
 
 extension SeriesDetailsView: SeriesDetailsViewProtocol {
     func showData(_ data: SeriesDetails.ViewModel) {
-        viewModel = data
+        detailsViewModel = data
         pageTableView.reloadData()
+    }
+    
+    func showSeasonsData(_ data: [Episodes.ViewModel.Season]) {
+        seasonsViewModel = data
+        pageTableView.reloadSections([Section.seasons.rawValue], with: .automatic)
     }
 }

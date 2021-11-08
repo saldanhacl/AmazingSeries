@@ -10,7 +10,7 @@ import Kingfisher
 
 final class ImageDownloader: ImageDownloaderProtocol {
     func fetchImage(on imageView: UIImageView, urlString: String, placeholder: UIImage?, completion: @escaping (UIImage?, Error?) -> Void) {
-        guard let url = URL(string: urlString) else { preconditionFailure("Invalid URL") }
+        guard let url = URL(string: urlString) else { return }
         
         imageView.kf.setImage(with: url, placeholder: placeholder) { result in
             switch result {

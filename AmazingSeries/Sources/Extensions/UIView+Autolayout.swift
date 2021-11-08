@@ -32,11 +32,11 @@ extension UIView {
         }
         
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: paddingBottom).isActive = true
+            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
         }
         
         if let trailing = trailing {
-            trailingAnchor.constraint(equalTo: trailing, constant: paddingTrailing).isActive = true
+            trailingAnchor.constraint(equalTo: trailing, constant: -paddingTrailing).isActive = true
         }
         
         if  width != .zero {

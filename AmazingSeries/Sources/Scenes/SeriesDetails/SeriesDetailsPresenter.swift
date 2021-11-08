@@ -9,6 +9,7 @@ import Foundation
 
 protocol SeriesDetailsPresentationLogic {
     func presentData(_ data: SeriesDetails.Response)
+    func presentEpisodesData(_ data: [Episodes.Response])
 }
 
 final class SeriesDetailsPresenter {
@@ -31,5 +32,21 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
         )
         
         viewController?.displayData(viewModel)
+    }
+    
+    func presentEpisodesData(_ data: [Episodes.Response]) {
+        let seasons = Dictionary(grouping: data, by: \.season)
+        let viewModels = seasons.map {
+            Episodes.ViewModel.Season(name: "Season \($0.key)", episodes: $0.value.map { (episode: Episodes.Response) in
+                Episodes.ViewModel.Episode(
+                    name: episode.name,
+                    number: String(episode.number),
+                    summary: episode.summary,
+                    cover: episode.image.medium
+                )
+            })
+        }
+        
+        viewController?.displaySeasonsData(viewModels)
     }
 }

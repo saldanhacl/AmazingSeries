@@ -24,7 +24,6 @@ final class DetailHeaderTableViewCell: CodedTableViewCell {
     
     private let posterImageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
         return view
     }()
@@ -78,7 +77,9 @@ final class DetailHeaderTableViewCell: CodedTableViewCell {
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             trailing: contentView.trailingAnchor,
-            height: 360
+            paddingLeading: -16.0,
+            paddingTrailing: -16.0,
+            height: Constants.bannerHeight
         )
     }
     
@@ -94,6 +95,7 @@ final class DetailHeaderTableViewCell: CodedTableViewCell {
         genresLabel.anchor(
             top: titleLabel.bottomAnchor,
             leading: contentView.leadingAnchor,
+            bottom: contentView.bottomAnchor,
             trailing: contentView.trailingAnchor,
             paddingTop: 8.0
         )

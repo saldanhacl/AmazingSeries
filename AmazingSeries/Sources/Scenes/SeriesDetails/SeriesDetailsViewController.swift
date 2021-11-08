@@ -9,6 +9,7 @@ import UIKit
 
 protocol SeriesDetailsDisplayLogic: AnyObject {
     func displayData(_ data: SeriesDetails.ViewModel)
+    func displaySeasonsData(_ data: [Episodes.ViewModel.Season])
 }
 
 final class SeriesDetailsViewController: UIViewController {
@@ -39,7 +40,6 @@ final class SeriesDetailsViewController: UIViewController {
     
     override func loadView() {
         view = SeriesDetailsView()
-        view.backgroundColor = .blue
         contentView = view as? SeriesDetailsViewProtocol
     }
     
@@ -65,5 +65,9 @@ final class SeriesDetailsViewController: UIViewController {
 extension SeriesDetailsViewController: SeriesDetailsDisplayLogic {
     func displayData(_ data: SeriesDetails.ViewModel) {
         contentView?.showData(data)
+    }
+    
+    func displaySeasonsData(_ data: [Episodes.ViewModel.Season]) {
+        contentView?.showSeasonsData(data)
     }
 }

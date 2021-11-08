@@ -73,6 +73,8 @@ class CodedTableViewCell: UITableViewCell, ViewCode {
     func setupConstraints() {
         fatalError("You should override this function in order to setup your CodedView.")
     }
+    
+    func aditionalConfiguration() {}
 }
 
 class CodedCollectionViewCell: UICollectionViewCell, ViewCode {

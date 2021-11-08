@@ -35,5 +35,44 @@ enum SeriesDetails {
         let schedule: String
         let genres: String
         let summary: String
+        
+        static func empty() -> ViewModel {
+            .init(name: "", posterURL: "", schedule: "", genres: "", summary: "")
+        }
+    }
+}
+
+enum Episodes {
+    struct Request {
+        let seriesId: Int
+    }
+    
+    struct Response: Codable {
+        let name: String
+        let number: Int
+        let season: Int
+        let summary: String
+        let image: Image
+        
+        struct Image: Codable {
+            let original: String
+            let medium: String
+        }
+    }
+    
+    struct ViewModel {
+        let seasons: [Season]
+        
+        struct Season {
+            let name: String
+            let episodes: [Episode]
+        }
+        
+        struct Episode {
+            let name: String
+            let number: String
+            let summary: String
+            let cover: String
+        }
     }
 }

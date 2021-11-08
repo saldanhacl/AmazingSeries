@@ -18,17 +18,20 @@ final class SeriesDetailsInteractor {
     private let seriesId: Int
     private let presenter: SeriesDetailsPresentationLogic
     private let getSeriesDetailsWorker: GetSeriesDetailsWorkerProtocol
-    
+    private let getEpisodesWorker: GetEpisodesWorkerProtocol
+
     // MARK: Initialization
     
     init(
         seriesId: Int,
         presenter: SeriesDetailsPresentationLogic,
-        getSeriesDetailsWorker: GetSeriesDetailsWorkerProtocol
+        getSeriesDetailsWorker: GetSeriesDetailsWorkerProtocol,
+        getEpisodesWorker: GetEpisodesWorkerProtocol
     ) {
         self.seriesId = seriesId
         self.presenter = presenter
         self.getSeriesDetailsWorker = getSeriesDetailsWorker
+        self.getEpisodesWorker = getEpisodesWorker
     }
 }
 
@@ -37,6 +40,7 @@ final class SeriesDetailsInteractor {
 extension SeriesDetailsInteractor: SeriesDetailsBusinessLogic {
     func onViewDidLoad() {
         loadSeriesDetails()
+        loadEpisodes()
     }
     
     // MARK: Private methods
@@ -47,6 +51,20 @@ extension SeriesDetailsInteractor: SeriesDetailsBusinessLogic {
                 switch result {
                 case let .success(response):
                     self?.presenter.presentData(response)
+                case .failure:
+                    // TODO: add failure presentation
+                    break
+                }
+            }
+        }
+    }
+    
+    private func loadEpisodes() {
+        getEpisodesWorker.getEpisodes(seriesId: seriesId) { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case let .success(response):
+                    self?.presenter.presentEpisodesData(response)
                 case .failure:
                     // TODO: add failure presentation
                     break
