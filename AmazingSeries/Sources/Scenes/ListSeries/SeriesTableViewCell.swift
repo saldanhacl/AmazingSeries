@@ -18,12 +18,31 @@ final class SeriesTableViewCell: CodedTableViewCell {
     
     private let posterImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .lightGray
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8.0
+        return view
+    }()
+        
+    private let titleLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .white
+        view.numberOfLines = 2
+        view.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         return view
     }()
     
-    private let titleLabel: UILabel = {
+    private let genresLabel: UILabel = {
         let view = UILabel()
+        view.textColor = .white
+        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        return view
+    }()
+    
+    private let ratingLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .white
+        view.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return view
     }()
     
@@ -32,11 +51,19 @@ final class SeriesTableViewCell: CodedTableViewCell {
     override func buildHierarchy() {
         contentView.addSubview(posterImageView)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(genresLabel)
+        contentView.addSubview(ratingLabel)
     }
     
     override func setupConstraints() {
         constrainPosterImageView()
         constrainTitleLabel()
+        constrainGenresLabel()
+        constrainRatingLabel()
+    }
+    
+    override func aditionalConfiguration() {
+        backgroundColor = .black
     }
     
     private func constrainPosterImageView() {
@@ -44,6 +71,8 @@ final class SeriesTableViewCell: CodedTableViewCell {
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: contentView.bottomAnchor,
+            paddingTop: 8.0,
+            paddingBottom: 8.0,
             width: 100,
             height: 140
         )
@@ -58,10 +87,30 @@ final class SeriesTableViewCell: CodedTableViewCell {
         )
     }
     
+    private func constrainGenresLabel() {
+        genresLabel.anchor(
+            top: titleLabel.bottomAnchor,
+            leading: titleLabel.leadingAnchor,
+            trailing: contentView.trailingAnchor,
+            paddingTop: 6.0
+        )
+    }
+    
+    private func constrainRatingLabel() {
+        ratingLabel.anchor(
+            top: genresLabel.bottomAnchor,
+            leading: genresLabel.leadingAnchor,
+            trailing: contentView.trailingAnchor,
+            paddingTop: 6.0
+        )
+    }
+    
     // MARK: Internal methods
     
-    func setupData(title: String, posterImageURL: String?) {
+    func setupData(title: String, genres: String, rating: String, posterImageURL: String?) {
         titleLabel.text = title
+        genresLabel.text = genres
+        ratingLabel.text = rating
         
         if let imageURL = posterImageURL {
             posterImageView.fetchImage(with: imageURL, placeholder: nil, imageDownloader: imageDownloader)

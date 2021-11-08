@@ -36,6 +36,7 @@ final class SeriesDetailsView: CodedView {
         view.separatorStyle = .none
         view.allowsSelection = false
         view.sectionFooterHeight = .zero
+        view.backgroundColor = .clear
         view.register(DetailHeaderTableViewCell.self, forCellReuseIdentifier: DetailHeaderTableViewCell.className)
         view.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: DetailDescriptionTableViewCell.className)
         view.register(DetailSeasonTableViewCell.self, forCellReuseIdentifier: DetailSeasonTableViewCell.className)
@@ -70,7 +71,7 @@ final class SeriesDetailsView: CodedView {
     }
     
     override func aditionalConfiguration() {
-        backgroundColor = .white
+        backgroundColor = .black
     }
     
     private func constrainPageTableView() {

@@ -38,7 +38,7 @@ final class DetailHeaderTableViewCell: CodedTableViewCell {
             width: UIScreen.main.bounds.width,
             height: Constants.gradientViewHeight
         )
-        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.white.withAlphaComponent(0.3).cgColor, UIColor.white.withAlphaComponent(0.8).cgColor,  UIColor.white.cgColor]
+        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0.8).cgColor,  UIColor.black.cgColor]
         gradientMaskLayer.locations = [0.0, 0.3, 0.6, 1.0]
         view.layer.addSublayer(gradientMaskLayer)
         

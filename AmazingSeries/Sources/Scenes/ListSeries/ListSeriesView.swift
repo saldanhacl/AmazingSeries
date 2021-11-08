@@ -46,6 +46,7 @@ final class ListSeriesView: CodedView {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Home"
+        view.textColor = .white
         view.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         return view
     }()
@@ -53,6 +54,7 @@ final class ListSeriesView: CodedView {
     private lazy var searchView: UISearchBar = {
         let view = UISearchBar()
         view.searchBarStyle = .minimal
+        view.barStyle = .black
         view.delegate = self
         return view
     }()
@@ -61,6 +63,7 @@ final class ListSeriesView: CodedView {
         let view = UITableView()
         view.dataSource = self
         view.delegate = self
+        view.backgroundColor = .clear
         view.register(SeriesTableViewCell.self, forCellReuseIdentifier: SeriesTableViewCell.className)
         return view
     }()
@@ -82,7 +85,7 @@ final class ListSeriesView: CodedView {
     }
     
     override func aditionalConfiguration() {
-        backgroundColor = .white
+        backgroundColor = .black
     }
     
     private func constrainContainerView() {
@@ -129,7 +132,12 @@ extension ListSeriesView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(with: SeriesTableViewCell.self, for: indexPath)
         let viewModel = filteredListSeriesViewModels[indexPath.row]
         
-        cell.setupData(title: viewModel.name, posterImageURL: viewModel.posterURL)
+        cell.setupData(
+            title: viewModel.title,
+            genres: viewModel.genres,
+            rating: viewModel.rating,
+            posterImageURL: viewModel.posterURL
+        )
         return cell
     }
 }
