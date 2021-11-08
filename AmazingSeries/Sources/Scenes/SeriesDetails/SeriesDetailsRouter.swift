@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SeriesDetailsRoutingLogic {
-    func goToEpisode(id: Int)
+    func goToEpisode(_ data: Episodes.ViewModel.Episode)
 }
 
 final class SeriesDetailsRouter {
@@ -16,12 +16,30 @@ final class SeriesDetailsRouter {
     // MARK: Depdendencies
     
     weak var viewController: UIViewController?
+    
+    // MARK: Private properties
+    
+    private let sceneFactory: EpisodeDetailsConfiguratorProtocol
+    
+    // MARK: Initialization
+    
+    init(sceneFactory: EpisodeDetailsConfiguratorProtocol) {
+        self.sceneFactory = sceneFactory
+    }
 }
 
 // MARK: SeriesDetailsRoutingLogic
 
 extension SeriesDetailsRouter: SeriesDetailsRoutingLogic {
-    func goToEpisode(id: Int) {
-        // TODO: Route when ready
+    func goToEpisode(_ data: Episodes.ViewModel.Episode) {
+        let destination = sceneFactory.resolveViewController(parameters: .init(
+            name: data.name,
+            number: data.number,
+            season: data.season,
+            summary: data.summary,
+            image: data.cover)
+        )
+        
+        viewController?.present(destination, animated: true)
     }
 }

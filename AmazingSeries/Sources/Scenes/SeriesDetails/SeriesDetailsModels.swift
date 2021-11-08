@@ -71,6 +71,7 @@ enum Episodes {
         
         struct Episode {
             let name: String
+            let season: String
             let number: String
             let summary: String
             let cover: String

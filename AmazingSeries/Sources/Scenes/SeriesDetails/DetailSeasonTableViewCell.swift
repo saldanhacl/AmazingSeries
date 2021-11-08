@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetailSeasonTableViewCellDelegate: AnyObject {
     func updateHeight()
+    func didSelectEpisode(_ data: Episodes.ViewModel.Episode)
 }
 
 final class DetailSeasonTableViewCell: CodedTableViewCell {
@@ -35,6 +36,7 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
         let view = ContentSizedTableView()
         view.isHidden = true
         view.dataSource = self
+        view.delegate = self
         view.isScrollEnabled = false
         view.setContentCompressionResistancePriority(.required, for: .vertical)
         view.setContentHuggingPriority(.required, for: .vertical)
@@ -111,5 +113,14 @@ extension DetailSeasonTableViewCell: UITableViewDataSource {
         
         cell.setupData(title: episode.name, coverImageURL: episode.cover)
         return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+
+extension DetailSeasonTableViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedEpisode = seasonViewModel?.episodes[indexPath.row] else { return }
+        delegate?.didSelectEpisode(selectedEpisode)
     }
 }

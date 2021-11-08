@@ -8,8 +8,14 @@
 import UIKit
 
 protocol SeriesDetailsViewProtocol {
+    var delegate: SeriesDetailsViewDelegate? { get set }
+    
     func showData(_ data: SeriesDetails.ViewModel)
     func showSeasonsData(_ data: [Episodes.ViewModel.Season])
+}
+
+protocol SeriesDetailsViewDelegate: AnyObject {
+    func didSelectEpisode(_ data: Episodes.ViewModel.Episode)
 }
 
 final class SeriesDetailsView: CodedView {
@@ -36,12 +42,16 @@ final class SeriesDetailsView: CodedView {
         return view
     }()
     
+    // MARK: Dependencies
+    
+    weak var delegate: SeriesDetailsViewDelegate?
+    
     // MARK: Private properties
     
     private var detailsViewModel: SeriesDetails.ViewModel = .empty()
     private var seasonsViewModel: [Episodes.ViewModel.Season] = []
     
-    // MARK: Life Cycle
+    // MARK: Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -153,11 +163,10 @@ extension SeriesDetailsView: UITableViewDelegate {
 extension SeriesDetailsView: DetailSeasonTableViewCellDelegate {
     func updateHeight() {
         pageTableView.performBatchUpdates {}
-        // TODO: add scroll to bottom
     }
     
-    func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
-        return indexPath.section < pageTableView.numberOfSections && indexPath.row < pageTableView.numberOfRows(inSection: indexPath.section)
+    func didSelectEpisode(_ data: Episodes.ViewModel.Episode) {
+        delegate?.didSelectEpisode(data)
     }
 }
     

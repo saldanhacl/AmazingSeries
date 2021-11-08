@@ -36,11 +36,12 @@ final class SeriesDetailsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Life Cycle
+    // MARK: Lifecycle
     
     override func loadView() {
         view = SeriesDetailsView()
         contentView = view as? SeriesDetailsViewProtocol
+        contentView?.delegate = self
     }
     
     override func viewDidLoad() {
@@ -69,5 +70,13 @@ extension SeriesDetailsViewController: SeriesDetailsDisplayLogic {
     
     func displaySeasonsData(_ data: [Episodes.ViewModel.Season]) {
         contentView?.showSeasonsData(data)
+    }
+}
+
+// MARK: SeriesDetailsViewDelegate
+
+extension SeriesDetailsViewController: SeriesDetailsViewDelegate {
+    func didSelectEpisode(_ data: Episodes.ViewModel.Episode) {
+        router.goToEpisode(data)
     }
 }

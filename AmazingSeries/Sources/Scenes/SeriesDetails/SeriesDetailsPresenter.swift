@@ -36,10 +36,12 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
     
     func presentEpisodesData(_ data: [Episodes.Response]) {
         let seasons = Dictionary(grouping: data, by: \.season).sorted { $0.key < $1.key }
-        let viewModels = seasons.map {
-            Episodes.ViewModel.Season(name: "Season \($0.key)", episodes: $0.value.map { (episode: Episodes.Response) in
+        let viewModels: [Episodes.ViewModel.Season] = seasons.map {
+            let seasonString = "Season \($0.key)"
+            return Episodes.ViewModel.Season(name: seasonString, episodes: $0.value.map { [seasonString] (episode: Episodes.Response) in
                 Episodes.ViewModel.Episode(
                     name: episode.name,
+                    season: seasonString,
                     number: String(episode.number),
                     summary: episode.summary,
                     cover: episode.image.medium

@@ -21,8 +21,9 @@ final class SeriesDetailsConfigurator: SeriesDetailsConfiguratorProtocol {
     func resolveViewController(parameters: SeriesDetailsParameters) -> UIViewController {
         let getSeriesDetailsWoker = GetSeriesDetailsWorker()
         let getEpisodesWorker = GetEpisodesWorker()
+        let episodeDetailsConfigurator = EpisodeDetailsConfigurator()
 
-        let router = SeriesDetailsRouter()
+        let router = SeriesDetailsRouter(sceneFactory: episodeDetailsConfigurator)
         let presenter = SeriesDetailsPresenter()
         let interactor = SeriesDetailsInteractor(
             seriesId: parameters.id,
@@ -34,6 +35,7 @@ final class SeriesDetailsConfigurator: SeriesDetailsConfiguratorProtocol {
         let viewController = SeriesDetailsViewController(interactor: interactor, router: router)
         
         presenter.viewController = viewController
+        router.viewController = viewController
         return viewController
     }
 }

@@ -37,6 +37,18 @@ final class ListSeriesView: CodedView {
 
     // MARK: View Elements
     
+    private let containterView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    private let titleLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Home"
+        view.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        return view
+    }()
+    
     private lazy var searchView: UISearchBar = {
         let view = UISearchBar()
         view.searchBarStyle = .minimal
@@ -55,11 +67,15 @@ final class ListSeriesView: CodedView {
     // MARK: Coded View
     
     override func buildHierarchy() {
-        addSubview(searchView)
-        addSubview(seriesTableView)
+        addSubview(containterView)
+        containterView.addSubview(titleLabel)
+        containterView.addSubview(searchView)
+        containterView.addSubview(seriesTableView)
     }
     
     override func setupConstraints() {
+        constrainContainerView()
+        constrainTitleLabel()
         constrainSearchView()
         constrainTableView()
     }
@@ -68,21 +84,35 @@ final class ListSeriesView: CodedView {
         backgroundColor = .white
     }
     
+    private func constrainContainerView() {
+        let spacing = 16.0
+        containterView.fillSuperview(paddingTop: spacing, paddingLeading: spacing, paddingTrailing: spacing)
+    }
+    
+    private func constrainTitleLabel() {
+        titleLabel.anchor(
+            top: containterView.topAnchor,
+            leading: containterView.leadingAnchor,
+            trailing: containterView.trailingAnchor,
+            paddingTop: 24.0
+        )
+    }
+    
     private func constrainSearchView() {
         searchView.anchor(
-            top: topAnchor,
-            leading: leadingAnchor,
-            trailing: trailingAnchor,
-            paddingTop: 60
+            top: titleLabel.bottomAnchor,
+            leading: containterView.leadingAnchor,
+            trailing: containterView.trailingAnchor,
+            paddingTop: 12.0
         )
     }
     
     private func constrainTableView() {
         seriesTableView.anchor(
             top: searchView.bottomAnchor,
-            leading: leadingAnchor,
-            bottom: bottomAnchor,
-            trailing: trailingAnchor
+            leading: containterView.leadingAnchor,
+            bottom: containterView.bottomAnchor,
+            trailing: containterView.trailingAnchor
         )
     }
 }
