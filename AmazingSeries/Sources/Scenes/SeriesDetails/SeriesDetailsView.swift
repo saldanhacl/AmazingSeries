@@ -32,7 +32,7 @@ final class SeriesDetailsView: CodedView {
         view.sectionFooterHeight = .zero
         view.register(DetailHeaderTableViewCell.self, forCellReuseIdentifier: DetailHeaderTableViewCell.className)
         view.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: DetailDescriptionTableViewCell.className)
-        view.register(DetailEpisodesTableViewCell.self, forCellReuseIdentifier: DetailEpisodesTableViewCell.className)
+        view.register(DetailSeasonTableViewCell.self, forCellReuseIdentifier: DetailSeasonTableViewCell.className)
         return view
     }()
     
@@ -40,6 +40,14 @@ final class SeriesDetailsView: CodedView {
     
     private var detailsViewModel: SeriesDetails.ViewModel = .empty()
     private var seasonsViewModel: [Episodes.ViewModel.Season] = []
+    
+    // MARK: Life Cycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        pageTableView.performBatchUpdates {}
+    }
     
     // MARK: Coded View
     
@@ -106,8 +114,9 @@ extension SeriesDetailsView: UITableViewDataSource {
             return cell
         case .seasons:
             let seasonViewModel = seasonsViewModel[indexPath.row]
-            let cell = pageTableView.dequeueReusableCell(with: DetailEpisodesTableViewCell.self, for: indexPath)
-            cell.setupData(title: seasonViewModel.name)
+            let cell = pageTableView.dequeueReusableCell(with: DetailSeasonTableViewCell.self, for: indexPath)
+            cell.setupData(seasonViewModel)
+            cell.delegate = self
             return cell
         default:
             return UITableViewCell()
@@ -136,6 +145,19 @@ extension SeriesDetailsView: UITableViewDelegate {
         
         view.setupData(title: title)
         return view
+    }
+}
+
+// MARK: SeriesDetailsViewProtocol
+
+extension SeriesDetailsView: DetailSeasonTableViewCellDelegate {
+    func updateHeight() {
+        pageTableView.performBatchUpdates {}
+        // TODO: add scroll to bottom
+    }
+    
+    func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
+        return indexPath.section < pageTableView.numberOfSections && indexPath.row < pageTableView.numberOfRows(inSection: indexPath.section)
     }
 }
     

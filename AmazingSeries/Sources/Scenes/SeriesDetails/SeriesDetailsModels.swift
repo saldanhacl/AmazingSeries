@@ -65,6 +65,7 @@ enum Episodes {
         
         struct Season {
             let name: String
+            var showEpisodes: Bool = false
             let episodes: [Episode]
         }
         

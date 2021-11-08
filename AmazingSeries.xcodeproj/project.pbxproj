@@ -45,9 +45,11 @@
 		0740DC6E27389DAE0050A135 /* DetailDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC6D27389DAE0050A135 /* DetailDescriptionTableViewCell.swift */; };
 		0740DC702738A0D60050A135 /* UILabel+HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC6F2738A0D60050A135 /* UILabel+HTML.swift */; };
 		0740DC722738A1BC0050A135 /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC712738A1BC0050A135 /* UIColor+hexString.swift */; };
-		0740DC742738A3100050A135 /* DetailEpisodesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC732738A3100050A135 /* DetailEpisodesTableViewCell.swift */; };
+		0740DC742738A3100050A135 /* DetailSeasonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC732738A3100050A135 /* DetailSeasonTableViewCell.swift */; };
 		0740DC762738A77D0050A135 /* DetailSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC752738A77D0050A135 /* DetailSectionHeaderView.swift */; };
 		0740DC782738AAEE0050A135 /* GetEpisodesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC772738AAEE0050A135 /* GetEpisodesWorker.swift */; };
+		0740DC7A2738B66B0050A135 /* DetailEpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC792738B66B0050A135 /* DetailEpisodeTableViewCell.swift */; };
+		0740DC7C2738B9AB0050A135 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC7B2738B9AB0050A135 /* ContentSizedTableView.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,9 +94,11 @@
 		0740DC6D27389DAE0050A135 /* DetailDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDescriptionTableViewCell.swift; sourceTree = "<group>"; };
 		0740DC6F2738A0D60050A135 /* UILabel+HTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+HTML.swift"; sourceTree = "<group>"; };
 		0740DC712738A1BC0050A135 /* UIColor+hexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
-		0740DC732738A3100050A135 /* DetailEpisodesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEpisodesTableViewCell.swift; sourceTree = "<group>"; };
+		0740DC732738A3100050A135 /* DetailSeasonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSeasonTableViewCell.swift; sourceTree = "<group>"; };
 		0740DC752738A77D0050A135 /* DetailSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSectionHeaderView.swift; sourceTree = "<group>"; };
 		0740DC772738AAEE0050A135 /* GetEpisodesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodesWorker.swift; sourceTree = "<group>"; };
+		0740DC792738B66B0050A135 /* DetailEpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEpisodeTableViewCell.swift; sourceTree = "<group>"; };
+		0740DC7B2738B9AB0050A135 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B774945FC288380FD211A726 /* Pods-AmazingSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.release.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				0740DC542738687D0050A135 /* ImageDownloader.swift */,
+				0740DC7B2738B9AB0050A135 /* ContentSizedTableView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -244,9 +249,10 @@
 				0740DC6927387D820050A135 /* GetSeriesDetailsWorker.swift */,
 				0740DC6B273881440050A135 /* DetailHeaderTableViewCell.swift */,
 				0740DC6D27389DAE0050A135 /* DetailDescriptionTableViewCell.swift */,
-				0740DC732738A3100050A135 /* DetailEpisodesTableViewCell.swift */,
+				0740DC732738A3100050A135 /* DetailSeasonTableViewCell.swift */,
 				0740DC752738A77D0050A135 /* DetailSectionHeaderView.swift */,
 				0740DC772738AAEE0050A135 /* GetEpisodesWorker.swift */,
+				0740DC792738B66B0050A135 /* DetailEpisodeTableViewCell.swift */,
 			);
 			path = SeriesDetails;
 			sourceTree = "<group>";
@@ -386,6 +392,7 @@
 				0740DC3227381AC10050A135 /* UIView+Autolayout.swift in Sources */,
 				0740DC6A27387D820050A135 /* GetSeriesDetailsWorker.swift in Sources */,
 				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
+				0740DC7A2738B66B0050A135 /* DetailEpisodeTableViewCell.swift in Sources */,
 				0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */,
 				0740DC6C273881440050A135 /* DetailHeaderTableViewCell.swift in Sources */,
 				0740DC5C2738727F0050A135 /* SeriesDetailsInteractor.swift in Sources */,
@@ -405,7 +412,7 @@
 				0740DC222738145B0050A135 /* ListSeriesPresenter.swift in Sources */,
 				0740DC5E273872850050A135 /* SeriesDetailsPresenter.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
-				0740DC742738A3100050A135 /* DetailEpisodesTableViewCell.swift in Sources */,
+				0740DC742738A3100050A135 /* DetailSeasonTableViewCell.swift in Sources */,
 				0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */,
 				0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */,
 				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
@@ -415,6 +422,7 @@
 				0740DC64273873910050A135 /* SeriesDetailsRouter.swift in Sources */,
 				0740DC372738298C0050A135 /* SeriesTableViewCell.swift in Sources */,
 				0740DC44273830060050A135 /* Config.swift in Sources */,
+				0740DC7C2738B9AB0050A135 /* ContentSizedTableView.swift in Sources */,
 				0740DC62273872930050A135 /* SeriesDetailsView.swift in Sources */,
 				0740DC602738728D0050A135 /* SeriesDetailsViewController.swift in Sources */,
 				0740DC5027385E5A0050A135 /* UICollectionView+Dequeue.swift in Sources */,
