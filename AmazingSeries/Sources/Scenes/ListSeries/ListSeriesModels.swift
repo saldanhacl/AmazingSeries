@@ -15,7 +15,7 @@ enum ListSeries {
     struct Response: Codable {
         let id: Int
         let name: String
-        let image: Image
+        let image: Image?
         
         struct Image: Codable {
             let medium: String
@@ -25,7 +25,22 @@ enum ListSeries {
     struct ViewModel {
         let id: Int
         let name: String
-        let posterURL: String
+        let posterURL: String?
+    }
+    
+    enum RequestError: Error {
+        case failed
+    }
+}
+
+enum SearchSeries {
+    struct Request {
+        let query: String
+    }
+    
+    struct Response: Codable {
+        let score: Double
+        let show: ListSeries.Response
     }
     
     enum RequestError: Error {

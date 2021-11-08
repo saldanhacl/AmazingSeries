@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ListSeriesPresentationLogic {
-    func presentSeriesData(_ data: [ListSeries.Response], append: Bool)
+    func presentSeriesData(_ data: [ListSeries.Response])
 }
 
 final class ListSeriesPresenter {
@@ -21,11 +21,11 @@ final class ListSeriesPresenter {
 // MARK: ListSeriesPresentationLogic
 
 extension ListSeriesPresenter: ListSeriesPresentationLogic {
-    func presentSeriesData(_ data: [ListSeries.Response], append: Bool) {
+    func presentSeriesData(_ data: [ListSeries.Response]) {
         let viewModels: [ListSeries.ViewModel] = data.map {
-            .init(id: $0.id, name: $0.name, posterURL: $0.image.medium)
+            .init(id: $0.id, name: $0.name, posterURL: $0.image?.medium)
             
         }
-        append ? viewController?.displayMoreSeries(viewModels) : viewController?.displaySeriesList(viewModels)
+        viewController?.displaySeriesList(viewModels)
     }
 }

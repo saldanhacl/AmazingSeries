@@ -60,8 +60,11 @@ final class SeriesTableViewCell: CodedTableViewCell {
     
     // MARK: Internal methods
     
-    func setupData(title: String, posterImageURL: String) {
+    func setupData(title: String, posterImageURL: String?) {
         titleLabel.text = title
-        posterImageView.fetchImage(with: posterImageURL, placeholder: nil, imageDownloader: imageDownloader)
+        
+        if let imageURL = posterImageURL {
+            posterImageView.fetchImage(with: imageURL, placeholder: nil, imageDownloader: imageDownloader)
+        }
     }
 }

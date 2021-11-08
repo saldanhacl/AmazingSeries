@@ -9,6 +9,7 @@ import Foundation
 
 enum API {
     case listSeries(queryParams: [String: String])
+    case searchSeries(queryParams: [String: String])
     case seriesDetails(id: String)
     case episodes(seriesId: String)
 }
@@ -22,6 +23,8 @@ extension API: NetworkRequest {
         switch self {
         case .listSeries:
             return "/shows"
+        case .searchSeries:
+            return "/search/shows"
         case let .seriesDetails(id):
             return "/shows/\(id)"
         case let .episodes(seriesId):
@@ -36,6 +39,8 @@ extension API: NetworkRequest {
     var queryItems: [String: String] {
         switch self {
         case let .listSeries(queryParams):
+            return queryParams
+        case let .searchSeries(queryParams):
             return queryParams
         case .seriesDetails(_), .episodes(_):
             return [:]

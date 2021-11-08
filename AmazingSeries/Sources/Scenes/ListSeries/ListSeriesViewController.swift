@@ -74,4 +74,8 @@ extension ListSeriesViewController: ListSeriesViewDelegate {
     func didSelectSeries(id: Int) {
         router.goToSeriesDetails(id: id)
     }
+    
+    func didChangeSearchQuery(_ query: String) {
+        interactor.searchSeries(query: query)
+    }
 }

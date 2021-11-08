@@ -10,6 +10,7 @@ import Foundation
 protocol ListSeriesBusinessLogic {
     func onViewDidLoad()
     func loadMoreData()
+    func searchSeries(query: String)
 }
 
 final class ListSeriesInteractor {
@@ -18,16 +19,23 @@ final class ListSeriesInteractor {
     
     private let presenter: ListSeriesPresentationLogic
     private let getSeriesWorker: GetSeriesWorkerProtocol
+    private let searchSeriesWorker: SearchSeriesWorker
     
     // MARK: Private properties
     
     private var currentPage: Int = .zero
+    private var seriesList: [ListSeries.Response] = []
     
     // MARK: Initialization
     
-    init(presenter: ListSeriesPresentationLogic, getSeriesWorker: GetSeriesWorkerProtocol) {
+    init(
+        presenter: ListSeriesPresentationLogic,
+        getSeriesWorker: GetSeriesWorkerProtocol,
+        searchSeriesWorker: SearchSeriesWorker
+    ) {
         self.presenter = presenter
         self.getSeriesWorker = getSeriesWorker
+        self.searchSeriesWorker = searchSeriesWorker
     }
 }
 
@@ -43,6 +51,14 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
         getSeries(page: currentPage, append: true)
     }
     
+    func searchSeries(query: String) {
+        if query.isEmpty {
+            presenter.presentSeriesData(seriesList)
+        } else {
+            loadSeries(by: query)
+        }
+    }
+    
     // MARK: Private methods
     
     private func getSeries(page: Int, append: Bool = false) {
@@ -50,7 +66,15 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case let .success(response):
-                    self?.presenter.presentSeriesData(response, append: append)
+                    guard var seriesList = self?.seriesList, append else {
+                        self?.seriesList = response
+                        self?.presenter.presentSeriesData(response)
+                        return
+                    }
+                    
+                    seriesList.append(contentsOf: response)
+                    self?.seriesList = seriesList
+                    self?.presenter.presentSeriesData(seriesList)
                 case .failure:
                     // TODO: add failure presentation
                     self?.currentPage -= 1
@@ -59,4 +83,20 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
             }
         }
     }
+    
+    private func loadSeries(by query: String) {
+        searchSeriesWorker.search(by: query) { result in
+            DispatchQueue.main.async { [weak self] in
+                switch result {
+                case let .success(response):
+                    let series: [ListSeries.Response] = response.map { $0.show }
+                    self?.presenter.presentSeriesData(series)
+                case .failure:
+                    // TODO: add failure presentation
+                    break
+                }
+            }
+        }
+    }
+
 }

@@ -17,6 +17,7 @@ protocol ListSeriesViewProtocol {
 
 protocol ListSeriesViewDelegate: AnyObject {
     func fetchMoredData()
+    func didChangeSearchQuery(_ query: String)
     func didSelectSeries(id: Int)
 }
 
@@ -155,11 +156,13 @@ extension ListSeriesView: UITableViewDelegate {
 
 extension ListSeriesView: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredListSeriesViewModels = searchText.isEmpty ? listSeriesViewModels : listSeriesViewModels.filter { (item: ListSeries.ViewModel) -> Bool in
-            item.name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
-        }
-        
-        seriesTableView.reloadData()
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(searchSeries), object: nil)
+        perform(#selector(searchSeries), with: nil, afterDelay: 0.5)
+    }
+    
+    @objc private func searchSeries() {
+        guard let searchText = searchView.text else { return }
+        delegate?.didChangeSearchQuery(searchText)
     }
 }
 

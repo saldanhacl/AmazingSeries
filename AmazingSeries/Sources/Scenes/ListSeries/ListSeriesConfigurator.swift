@@ -16,11 +16,12 @@ final class ListSeriesConfigurator: ListSeriesConfiguratorProtocol {
 
     func resolveViewController() -> UIViewController {
         let getSeriesWorker = GetSeriesWorker()
-        
+        let searchSeriesWorker = SearchSeriesWorker()
+
         let seriesDetailsConfigurator = SeriesDetailsConfigurator()
         let router = ListSeriesRouter(sceneFactory: seriesDetailsConfigurator)
         let presenter = ListSeriesPresenter()
-        let interactor = ListSeriesInteractor(presenter: presenter, getSeriesWorker: getSeriesWorker)
+        let interactor = ListSeriesInteractor(presenter: presenter, getSeriesWorker: getSeriesWorker, searchSeriesWorker: searchSeriesWorker)
         let viewController = ListSeriesViewController(interactor: interactor, router: router)
         
         presenter.viewController = viewController
