@@ -31,7 +31,6 @@ final class SeriesDetailsView: CodedView {
     
     private struct Constants {
         static let bannerHeight: CGFloat = 360.0
-        static let gradientViewHeight: CGFloat = bannerHeight / 3
     }
     
     // MARK: Dependencies
@@ -44,23 +43,7 @@ final class SeriesDetailsView: CodedView {
         let view = UIImageView()
         view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
-        return view
-    }()
-    
-    private let gradientView: UIView = {
-        let view = UIView()
-        
-        let gradientMaskLayer = CAGradientLayer()
-        gradientMaskLayer.frame = CGRect(
-            x: .zero,
-            y: Constants.bannerHeight - Constants.gradientViewHeight,
-            width: UIScreen.main.bounds.width,
-            height: Constants.gradientViewHeight
-        )
-        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0.8).cgColor,  UIColor.black.cgColor]
-        gradientMaskLayer.locations = [0.0, 0.3, 0.6, 1.0]
-        view.layer.addSublayer(gradientMaskLayer)
-        
+        view.frame = CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: Constants.bannerHeight)
         return view
     }()
     
@@ -99,28 +82,15 @@ final class SeriesDetailsView: CodedView {
     
     override func buildHierarchy() {
         addSubview(posterImageView)
-//        addSubview(gradientView)
         addSubview(pageTableView)
     }
 
     override func setupConstraints() {
-        constrainPosterImageView()
         constrainPageTableView()
     }
     
     override func aditionalConfiguration() {
         backgroundColor = .black
-    }
-    
-    private func constrainPosterImageView() {
-        posterImageView.anchor(
-            top: topAnchor,
-            leading: leadingAnchor,
-            trailing: trailingAnchor
-        )
-        
-        posterImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([posterHeightConstraint])
     }
     
     private func constrainPageTableView() {
@@ -213,7 +183,7 @@ extension SeriesDetailsView: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentY = -scrollView.contentOffset.y
-        posterHeightConstraint.constant = contentY
+        posterImageView.frame = CGRect(x: .zero, y: .zero, width: UIScreen.main.bounds.width, height: contentY)
     }
 }
 
