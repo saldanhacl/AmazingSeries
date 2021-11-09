@@ -94,19 +94,12 @@ final class SeriesDetailsView: CodedView {
     private var detailsViewModel: SeriesDetails.ViewModel = .empty()
     private var seasonsViewModel: [Episodes.ViewModel.Season] = []
     
-    // MARK: Lifecycle
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        pageTableView.performBatchUpdates {}
-    }
     
     // MARK: Coded View
     
     override func buildHierarchy() {
         addSubview(posterImageView)
-        addSubview(gradientView)
+//        addSubview(gradientView)
         addSubview(pageTableView)
     }
 
@@ -219,8 +212,8 @@ extension SeriesDetailsView: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let contentY = -scrollView.contentOffset.y
-//        posterHeightConstraint.constant = contentY
+        let contentY = -scrollView.contentOffset.y
+        posterHeightConstraint.constant = contentY
     }
 }
 

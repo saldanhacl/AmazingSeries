@@ -64,6 +64,7 @@ final class SeriesTableViewCell: CodedTableViewCell {
     
     override func aditionalConfiguration() {
         backgroundColor = .black
+        selectionStyle = .none
     }
     
     private func constrainPosterImageView() {

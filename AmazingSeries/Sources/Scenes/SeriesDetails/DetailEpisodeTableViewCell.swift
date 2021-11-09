@@ -46,6 +46,7 @@ final class DetailEpisodeTableViewCell: CodedTableViewCell {
     
     override func aditionalConfiguration() {
         backgroundColor = .clear
+        selectionStyle = .none
     }
     
     private func constrainPosterImageView() {
