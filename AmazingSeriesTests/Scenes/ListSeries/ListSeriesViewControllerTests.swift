@@ -28,7 +28,7 @@ class ListSeriesViewControllerTests: XCTestCase {
         let sut = makeSUT(interactor: interactorSpy)
         
         // When
-        sut.fetchMoredData()
+        sut.fetchMoreData()
         
         // Then
         XCTAssert(interactorSpy.loadMoreDataCalled, "fetchMoredData() should call loadMoreData from Interactor")

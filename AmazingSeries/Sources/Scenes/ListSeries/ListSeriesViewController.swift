@@ -10,6 +10,7 @@ import UIKit
 
 protocol ListSeriesDisplayLogic: AnyObject {
     func displaySeriesList(_ data: [ListSeries.ViewModel])
+    func displayErrorState()
 }
 
 final class ListSeriesViewController: UIViewController {
@@ -57,12 +58,16 @@ extension ListSeriesViewController: ListSeriesDisplayLogic {
     func displaySeriesList(_ data: [ListSeries.ViewModel]) {
         contentView?.showSeriesList(data)
     }
+    
+    func displayErrorState() {
+        contentView?.showErrorView()
+    }
 }
 
 // MARK: ListSeriesViewDelegate
 
 extension ListSeriesViewController: ListSeriesViewDelegate {
-    func fetchMoredData() {
+    func fetchMoreData() {
         interactor.loadMoreData()
     }
     
@@ -72,5 +77,9 @@ extension ListSeriesViewController: ListSeriesViewDelegate {
     
     func didChangeSearchQuery(_ query: String) {
         interactor.searchSeries(query: query)
+    }
+    
+    func reloadData() {
+        interactor.onViewDidLoad()
     }
 }

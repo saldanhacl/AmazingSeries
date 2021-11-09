@@ -82,7 +82,7 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
                     self?.seriesList = seriesList
                     self?.presenter.presentSeriesData(seriesList)
                 case .failure:
-                    // TODO: add failure presentation
+                    self?.presenter.presentError()
                     self?.currentPage -= 1
                     break
                 }
@@ -98,7 +98,7 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
                     let series: [ListSeries.Response] = response.map { $0.show }
                     self?.presenter.presentSeriesData(series)
                 case .failure:
-                    // TODO: add failure presentation
+                    self?.presenter.presentError()
                     break
                 }
             }

@@ -9,6 +9,7 @@ import Foundation
 @testable import AmazingSeries
 
 final class ListSeriesPresenterSpy: ListSeriesPresentationLogic {
+    var presentErrorCalled = false
     var presentSeriesDataCalled = false
     var data: [ListSeries.Response] = []
     
@@ -16,15 +17,24 @@ final class ListSeriesPresenterSpy: ListSeriesPresentationLogic {
         presentSeriesDataCalled = true
         self.data = data
     }
+    
+    func presentError() {
+        presentErrorCalled = true
+    }
 }
 
 final class ListSeriesViewControllerSpy: ListSeriesDisplayLogic {
     var displaySeriesListCalled = false
+    var displayErrorStateCalled = false
     var data: [ListSeries.ViewModel] = []
     
     func displaySeriesList(_ data: [ListSeries.ViewModel]) {
         displaySeriesListCalled = true
         self.data = data
+    }
+    
+    func displayErrorState() {
+        displayErrorStateCalled = true
     }
 }
 

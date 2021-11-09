@@ -9,6 +9,7 @@ import Foundation
 
 protocol ListSeriesPresentationLogic {
     func presentSeriesData(_ data: [ListSeries.Response])
+    func presentError()
 }
 
 final class ListSeriesPresenter {
@@ -33,6 +34,10 @@ extension ListSeriesPresenter: ListSeriesPresentationLogic {
             
         }
         viewController?.displaySeriesList(viewModels)
+    }
+    
+    func presentError() {
+        viewController?.displayErrorState()
     }
     
     // MARK: Private methods

@@ -67,6 +67,7 @@
 		07A9C20D27396938005499D8 /* EpisodeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C20C27396938005499D8 /* EpisodeDetailsView.swift */; };
 		07B800B5273B1F4E004D1486 /* DispatchQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B800B4273B1F4E004D1486 /* DispatchQueueProtocol.swift */; };
 		07B800B7273B1F8F004D1486 /* DispatchQueue+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B800B6273B1F8F004D1486 /* DispatchQueue+Protocol.swift */; };
+		07B800BB273B2B80004D1486 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B800BA273B2B80004D1486 /* ErrorView.swift */; };
 		07E10770273970AE00D6F493 /* EpisodeDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1076F273970AE00D6F493 /* EpisodeDetailsConfigurator.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
@@ -145,6 +146,7 @@
 		07A9C20C27396938005499D8 /* EpisodeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsView.swift; sourceTree = "<group>"; };
 		07B800B4273B1F4E004D1486 /* DispatchQueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueProtocol.swift; sourceTree = "<group>"; };
 		07B800B6273B1F8F004D1486 /* DispatchQueue+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Protocol.swift"; sourceTree = "<group>"; };
+		07B800BA273B2B80004D1486 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		07E1076F273970AE00D6F493 /* EpisodeDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsConfigurator.swift; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +273,7 @@
 		0740DC4127382FEA0050A135 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				07B800B9273B2B74004D1486 /* Common */,
 				0740DC53273868730050A135 /* Helpers */,
 				0740DC3E27382F1A0050A135 /* Service */,
 				0740DC2E2738184A0050A135 /* Extensions */,
@@ -368,6 +371,14 @@
 				07E1076F273970AE00D6F493 /* EpisodeDetailsConfigurator.swift */,
 			);
 			path = EpisodeDetails;
+			sourceTree = "<group>";
+		};
+		07B800B9273B2B74004D1486 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				07B800BA273B2B80004D1486 /* ErrorView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		315FE9C7A3B6997D310F0D3C /* Pods */ = {
@@ -538,6 +549,7 @@
 				0740DC4027382F280050A135 /* NetworkManager.swift in Sources */,
 				0740DC7A2738B66B0050A135 /* DetailEpisodeTableViewCell.swift in Sources */,
 				0740DC552738687D0050A135 /* ImageDownloader.swift in Sources */,
+				07B800BB273B2B80004D1486 /* ErrorView.swift in Sources */,
 				0740DC6C273881440050A135 /* DetailHeaderTableViewCell.swift in Sources */,
 				0740DC5C2738727F0050A135 /* SeriesDetailsInteractor.swift in Sources */,
 				0740DBFF273807780050A135 /* ViewController.swift in Sources */,

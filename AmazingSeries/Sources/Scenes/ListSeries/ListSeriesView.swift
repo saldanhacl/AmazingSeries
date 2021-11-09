@@ -12,10 +12,12 @@ protocol ListSeriesViewProtocol {
     var delegate: ListSeriesViewDelegate? { get set }
     
     func showSeriesList(_ data: [ListSeries.ViewModel])
+    func showErrorView()
 }
 
 protocol ListSeriesViewDelegate: AnyObject {
-    func fetchMoredData()
+    func reloadData()
+    func fetchMoreData()
     func didChangeSearchQuery(_ query: String)
     func didSelectSeries(id: Int)
 }
@@ -67,6 +69,12 @@ final class ListSeriesView: CodedView {
         return view
     }()
     
+    private let errorView: ErrorView = {
+        let view = ErrorView()
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: Coded View
     
     override func buildHierarchy() {
@@ -74,6 +82,7 @@ final class ListSeriesView: CodedView {
         containterView.addSubview(titleLabel)
         containterView.addSubview(searchView)
         containterView.addSubview(seriesTableView)
+        addSubview(errorView)
     }
     
     override func setupConstraints() {
@@ -81,10 +90,12 @@ final class ListSeriesView: CodedView {
         constrainTitleLabel()
         constrainSearchView()
         constrainTableView()
+        constrainErrorView()
     }
     
     override func aditionalConfiguration() {
         backgroundColor = .black
+        errorView.delegate = self
     }
     
     private func constrainContainerView() {
@@ -118,6 +129,14 @@ final class ListSeriesView: CodedView {
             trailing: containterView.trailingAnchor
         )
     }
+    
+    private func constrainErrorView() {
+        errorView.centerWithSuperview()
+        errorView.anchor(
+            width: 160,
+            height: 280
+        )
+    }
 }
 
 // MARK: UITableViewDataSource
@@ -149,7 +168,7 @@ extension ListSeriesView: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
 
         if maximumOffset - currentOffset <= 2 {
-            delegate?.fetchMoredData()
+            delegate?.fetchMoreData()
         }
     }
     
@@ -177,7 +196,23 @@ extension ListSeriesView: UISearchBarDelegate {
 
 extension ListSeriesView: ListSeriesViewProtocol {
     func showSeriesList(_ data: [ListSeries.ViewModel]) {
+        containterView.isHidden = false
+        errorView.isHidden = true
+        
         listSeriesViewModels = data
         seriesTableView.reloadData()
+    }
+    
+    func showErrorView() {
+        containterView.isHidden = true
+        errorView.isHidden = false
+    }
+}
+
+// MARK: ErrorViewDelegate
+
+extension ListSeriesView: ErrorViewDelegate {
+    func didTapReloadButton() {
+        delegate?.reloadData()
     }
 }
