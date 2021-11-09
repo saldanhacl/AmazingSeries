@@ -12,7 +12,7 @@ enum EpisodeDetails{
         let name: String
         let number: String
         let season: String
-        let summary: String
-        let cover: String
+        let summary: String?
+        let cover: String?
     }
 }

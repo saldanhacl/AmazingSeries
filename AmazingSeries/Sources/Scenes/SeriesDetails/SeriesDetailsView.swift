@@ -116,8 +116,12 @@ extension SeriesDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = Section(rawValue: section)
         switch section {
-        case .header, .summary, .schedule:
+        case .header:
             return 1
+        case .summary:
+            return detailsViewModel.summary.isEmpty ? .zero : 1
+        case .schedule:
+            return detailsViewModel.schedule.isEmpty ? .zero : 1
         case .seasons:
             return seasonsViewModel.count
         case .none:
@@ -137,7 +141,7 @@ extension SeriesDetailsView: UITableViewDataSource {
         switch section {
         case .header:
             let cell = pageTableView.dequeueReusableCell(with: DetailHeaderTableViewCell.self, for: indexPath)
-            cell.setupData(title: detailsViewModel.name, genres: detailsViewModel.genres, imageURL: detailsViewModel.posterURL)
+            cell.setupData(title: detailsViewModel.name, genres: detailsViewModel.genres)
             return cell
         case .summary:
             let cell = pageTableView.dequeueReusableCell(with: DetailDescriptionTableViewCell.self, for: indexPath)
@@ -204,7 +208,9 @@ extension SeriesDetailsView: DetailSeasonTableViewCellDelegate {
 
 extension SeriesDetailsView: SeriesDetailsViewProtocol {
     func showData(_ data: SeriesDetails.ViewModel) {
-        posterImageView.fetchImage(with: data.posterURL, placeholder: nil, imageDownloader: imageDownloader)
+        if let imageURL = data.posterURL {
+            posterImageView.fetchImage(with: imageURL, placeholder: nil, imageDownloader: imageDownloader)
+        }
         detailsViewModel = data
         pageTableView.reloadData()
     }

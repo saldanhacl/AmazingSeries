@@ -63,7 +63,7 @@ final class DetailHeaderTableViewCell: CodedTableViewCell {
     
     // MARK: Internal methods
     
-    func setupData(title: String, genres: String, imageURL: String) {        
+    func setupData(title: String, genres: String) {        
         titleLabel.text = title
         genresLabel.text = genres
     }

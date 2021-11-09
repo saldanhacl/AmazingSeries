@@ -25,10 +25,10 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
     func presentData(_ data: SeriesDetails.Response) {
         let viewModel = SeriesDetails.ViewModel(
             name: data.name,
-            posterURL: data.image.original,
-            schedule: "Every \(data.schedule.days.joined(separator: ", ")) at \(data.schedule.time)",
-            genres: data.genres.joined(separator: " - "),
-            summary: data.summary
+            posterURL: data.image?.original,
+            schedule: getScheduleString(data.schedule),
+            genres: data.genres?.joined(separator: " - ") ?? "",
+            summary: data.summary ?? ""
         )
         
         viewController?.displayData(viewModel)
@@ -44,12 +44,17 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
                     season: seasonString,
                     number: String(episode.number),
                     summary: episode.summary,
-                    coverImage: episode.image.medium,
-                    originalImage: episode.image.original
+                    coverImage: episode.image?.medium,
+                    originalImage: episode.image?.original
                 )
             })
         }
         
         viewController?.displaySeasonsData(viewModels)
+    }
+    
+    private func getScheduleString(_ schedule: SeriesDetails.Response.Schedule?) -> String {
+        guard let schedule = schedule else { return "" }
+        return "Every \(schedule.days.joined(separator: ", ")) at \(schedule.time)"
     }
 }

@@ -11,8 +11,8 @@ struct EpisodeDetailsParameters {
     let name: String
     let number: String
     let season: String
-    let summary: String
-    let image: String
+    let summary: String?
+    let image: String?
 }
 
 protocol EpisodeDetailsConfiguratorProtocol {

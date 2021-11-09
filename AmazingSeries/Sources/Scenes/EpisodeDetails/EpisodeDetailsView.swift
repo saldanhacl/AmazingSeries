@@ -128,10 +128,12 @@ final class EpisodeDetailsView: CodedView {
 
 extension EpisodeDetailsView: EpisodeDetailsViewProtocol {
     func showViewData(_ data: EpisodeDetails.ViewModel) {
-        coverImageView.fetchImage(with: data.cover, placeholder: nil, imageDownloader: imageDownloader)
+        if let imageURL = data.cover {
+            coverImageView.fetchImage(with: imageURL, placeholder: nil, imageDownloader: imageDownloader)
+        }
         
         nameLabel.text = data.name
         episodeInfoLabel.text = "\(data.season) - Episode \(data.number)"
-        summaryLabel.renderAsHTML(data.summary, with: UIFont.systemFont(ofSize: 16, weight: .semibold), color: .white)
+        summaryLabel.renderAsHTML(data.summary ?? "", with: UIFont.systemFont(ofSize: 16, weight: .semibold), color: .white)
     }
 }

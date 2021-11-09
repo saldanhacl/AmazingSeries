@@ -12,6 +12,8 @@ class NetworkManager: NetworkManagerProtocol {
         
         let urlRequest = buildURLRequest(request)
         
+        Swift.print("Request: \(urlRequest)")
+        
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {

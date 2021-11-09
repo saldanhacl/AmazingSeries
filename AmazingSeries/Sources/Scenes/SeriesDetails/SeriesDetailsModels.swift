@@ -14,10 +14,10 @@ enum SeriesDetails {
     
     struct Response: Codable {
         let name: String
-        let image: Image
-        let schedule: Schedule
-        let genres: [String]
-        let summary: String
+        let image: Image?
+        let schedule: Schedule?
+        let genres: [String]?
+        let summary: String?
         
         struct Image: Codable {
             let original: String
@@ -31,7 +31,7 @@ enum SeriesDetails {
     
     struct ViewModel {
         let name: String
-        let posterURL: String
+        let posterURL: String?
         let schedule: String
         let genres: String
         let summary: String
@@ -51,8 +51,8 @@ enum Episodes {
         let name: String
         let number: Int
         let season: Int
-        let summary: String
-        let image: Image
+        let summary: String?
+        let image: Image?
         
         struct Image: Codable {
             let original: String
@@ -73,9 +73,9 @@ enum Episodes {
             let name: String
             let season: String
             let number: String
-            let summary: String
-            let coverImage: String
-            let originalImage: String
+            let summary: String?
+            let coverImage: String?
+            let originalImage: String?
         }
     }
 }

@@ -72,8 +72,11 @@ final class DetailEpisodeTableViewCell: CodedTableViewCell {
     
     // MARK: Internal methods
     
-    func setupData(title: String, coverImageURL: String) {
+    func setupData(title: String, coverImageURL: String?) {
         titleLabel.text = title
-        coverImageView.fetchImage(with: coverImageURL, placeholder: nil, imageDownloader: imageDownloader)
+        
+        if let imageURL = coverImageURL {
+            coverImageView.fetchImage(with: imageURL, placeholder: nil, imageDownloader: imageDownloader)
+        }
     }
 }
