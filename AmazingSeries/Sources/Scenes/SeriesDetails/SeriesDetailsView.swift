@@ -27,20 +27,62 @@ final class SeriesDetailsView: CodedView {
         case seasons
     }
     
+    // MARK: Constants
+    
+    private struct Constants {
+        static let bannerHeight: CGFloat = 360.0
+        static let gradientViewHeight: CGFloat = bannerHeight / 3
+    }
+    
+    // MARK: Dependencies
+    
+    @Dependency private var imageDownloader: ImageDownloaderProtocol
+    
     // MARK: View Elements
     
+    private let posterImageView: UIImageView = {
+        let view = UIImageView()
+        view.clipsToBounds = true
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
+    private let gradientView: UIView = {
+        let view = UIView()
+        
+        let gradientMaskLayer = CAGradientLayer()
+        gradientMaskLayer.frame = CGRect(
+            x: .zero,
+            y: Constants.bannerHeight - Constants.gradientViewHeight,
+            width: UIScreen.main.bounds.width,
+            height: Constants.gradientViewHeight
+        )
+        gradientMaskLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0.8).cgColor,  UIColor.black.cgColor]
+        gradientMaskLayer.locations = [0.0, 0.3, 0.6, 1.0]
+        view.layer.addSublayer(gradientMaskLayer)
+        
+        return view
+    }()
+    
     private lazy var pageTableView: UITableView = {
-        let view = UITableView()
+        let view = UITableView(frame: .zero, style: .grouped)
         view.dataSource = self
         view.delegate = self
         view.separatorStyle = .none
         view.allowsSelection = false
-        view.sectionFooterHeight = .zero
         view.backgroundColor = .clear
+        view.contentInsetAdjustmentBehavior = .never
+        view.contentInset = UIEdgeInsets(top: Constants.bannerHeight, left: .zero, bottom: .zero, right: .zero)
         view.register(DetailHeaderTableViewCell.self, forCellReuseIdentifier: DetailHeaderTableViewCell.className)
         view.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: DetailDescriptionTableViewCell.className)
         view.register(DetailSeasonTableViewCell.self, forCellReuseIdentifier: DetailSeasonTableViewCell.className)
         return view
+    }()
+    
+    // MARK: Constraints
+    
+    private lazy var posterHeightConstraint: NSLayoutConstraint = {
+        posterImageView.heightAnchor.constraint(equalToConstant: Constants.bannerHeight)
     }()
     
     // MARK: Dependencies
@@ -63,10 +105,13 @@ final class SeriesDetailsView: CodedView {
     // MARK: Coded View
     
     override func buildHierarchy() {
+        addSubview(posterImageView)
+        addSubview(gradientView)
         addSubview(pageTableView)
     }
 
     override func setupConstraints() {
+        constrainPosterImageView()
         constrainPageTableView()
     }
     
@@ -74,8 +119,23 @@ final class SeriesDetailsView: CodedView {
         backgroundColor = .black
     }
     
+    private func constrainPosterImageView() {
+        posterImageView.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            trailing: trailingAnchor
+        )
+        
+        posterImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([posterHeightConstraint])
+    }
+    
     private func constrainPageTableView() {
-        pageTableView.fillSuperview(
+        pageTableView.anchor(
+            top: topAnchor,
+            leading: leadingAnchor,
+            bottom: bottomAnchor,
+            trailing: trailingAnchor,
             paddingLeading: 16.0,
             paddingTrailing: 16.0
         )
@@ -157,6 +217,11 @@ extension SeriesDetailsView: UITableViewDelegate {
         view.setupData(title: title)
         return view
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let contentY = -scrollView.contentOffset.y
+//        posterHeightConstraint.constant = contentY
+    }
 }
 
 // MARK: SeriesDetailsViewProtocol
@@ -175,6 +240,7 @@ extension SeriesDetailsView: DetailSeasonTableViewCellDelegate {
 
 extension SeriesDetailsView: SeriesDetailsViewProtocol {
     func showData(_ data: SeriesDetails.ViewModel) {
+        posterImageView.fetchImage(with: data.posterURL, placeholder: nil, imageDownloader: imageDownloader)
         detailsViewModel = data
         pageTableView.reloadData()
     }

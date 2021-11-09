@@ -18,17 +18,34 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
     private let contentStackView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
+        view.spacing = 8.0
         view.distribution = .fill
         
+        return view
+    }()
+    
+    private let roundedBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        return view
+    }()
+    
+    private lazy var collapaseButton: UIButton = {
+        let view = UIButton()
+        view.tintColor = .white
+        view.setImage(UIImage(named: "chevron_down"), for: .normal)
+        view.setImage(UIImage(named: "chevron_up"), for: .selected)
+        view.imageEdgeInsets = UIEdgeInsets(top: .zero, left: (bounds.width - 24), bottom: .zero, right: .zero)
+        view.addTarget(self, action: #selector(seasonTitleTapped), for: .touchUpInside)
         return view
     }()
     
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
+        view.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         
-        view.isUserInteractionEnabled = true
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(labelTapped(_:))))
         return view
     }()
     
@@ -38,6 +55,7 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
         view.dataSource = self
         view.delegate = self
         view.isScrollEnabled = false
+        view.backgroundColor = .clear
         view.setContentCompressionResistancePriority(.required, for: .vertical)
         view.setContentHuggingPriority(.required, for: .vertical)
         view.register(DetailEpisodeTableViewCell.self, forCellReuseIdentifier: DetailEpisodeTableViewCell.className)
@@ -54,7 +72,7 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
     private var showEpisodes: Bool = false {
         didSet {
             episodesTableView.isHidden = !showEpisodes
-
+            collapaseButton.isSelected = showEpisodes
         }
     }
     
@@ -62,16 +80,20 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
     
     override func buildHierarchy() {
         contentView.addSubview(contentStackView)
-        contentStackView.addArrangedSubview(titleLabel)
+        contentStackView.addArrangedSubview(roundedBackgroundView)
+        roundedBackgroundView.addSubview(titleLabel)
+        roundedBackgroundView.addSubview(collapaseButton)
         contentStackView.addArrangedSubview(episodesTableView)
     }
     
     override func setupConstraints() {
         constrainContentStackView()
+        constrainTitleLabel()
+        constrainCollapseButton()
     }
     
     override func aditionalConfiguration() {
-        backgroundColor = .darkGray
+        backgroundColor = .clear
     }
     
     private func constrainContentStackView() {
@@ -84,6 +106,21 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
         )
     }
     
+    private func constrainTitleLabel() {
+        titleLabel.anchor(
+            top: roundedBackgroundView.topAnchor,
+            leading: roundedBackgroundView.leadingAnchor,
+            bottom: roundedBackgroundView.bottomAnchor,
+            paddingTop: 6.0,
+            paddingLeading: 16.0,
+            paddingBottom: 6.0
+        )
+    }
+    
+    private func constrainCollapseButton() {
+        collapaseButton.fillSuperview()
+    }
+    
     // MARK: Internal methods
     
     func setupData(_ data: Episodes.ViewModel.Season) {
@@ -94,7 +131,7 @@ final class DetailSeasonTableViewCell: CodedTableViewCell {
     
     // MARK: Actions
     
-    @objc private func labelTapped(_ sender: UITapGestureRecognizer) {
+    @objc private func seasonTitleTapped(_ sender: UIButton) {
         showEpisodes = !showEpisodes
         delegate?.updateHeight()
     }

@@ -26,6 +26,10 @@ final class DetailDescriptionTableViewCell: CodedTableViewCell {
         constrainDescriptionLabel()
     }
     
+    override func aditionalConfiguration() {
+        backgroundColor = .clear
+    }
+    
 
     private func constrainDescriptionLabel() {
         descriptionLabel.anchor(
@@ -40,6 +44,6 @@ final class DetailDescriptionTableViewCell: CodedTableViewCell {
     // MARK: Internal methods
     
     func setupData(description: String) {
-        descriptionLabel.renderAsHTML(description, with: UIFont.systemFont(ofSize: 16), color: UIColor.black)
+        descriptionLabel.renderAsHTML(description, with: UIFont.systemFont(ofSize: 16, weight: .semibold), color: .white)        
     }
 }

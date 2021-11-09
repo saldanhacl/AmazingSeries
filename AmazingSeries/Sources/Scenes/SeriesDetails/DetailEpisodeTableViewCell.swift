@@ -17,12 +17,18 @@ final class DetailEpisodeTableViewCell: CodedTableViewCell {
     
     private let coverImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .lightGray
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8.0
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
     private let titleLabel: UILabel = {
         let view = UILabel()
+        view.numberOfLines = 2
+        view.textColor = .white
+        view.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return view
     }()
     
@@ -38,11 +44,17 @@ final class DetailEpisodeTableViewCell: CodedTableViewCell {
         constrainTitleLabel()
     }
     
+    override func aditionalConfiguration() {
+        backgroundColor = .clear
+    }
+    
     private func constrainPosterImageView() {
         coverImageView.anchor(
             top: contentView.topAnchor,
             leading: contentView.leadingAnchor,
             bottom: contentView.bottomAnchor,
+            paddingTop: 8.0,
+            paddingBottom: 8.0,
             width: 80,
             height: 60
         )

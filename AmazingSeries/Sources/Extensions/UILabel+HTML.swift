@@ -18,7 +18,7 @@ extension UILabel {
         do {
             let modifiedFont = String(
                 format:
-                    "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><span style=\"font-family: \(font.fontName); font-size: \(font.pointSize); color: \(color.toHexString() )\">%@</span>"
+                    "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/><span style=\"font-family: '-apple-system', \(font.fontName.replacingOccurrences(of: ".", with: "")); font-size: \(font.pointSize); color: \(color.toHexString() )\">%@</span>"
                 ,string
             )
 

@@ -52,27 +52,3 @@ extension ListSeriesPresenter: ListSeriesPresentationLogic {
         return String(year)
     }
 }
-
-extension DateFormatter {
-    convenience init (format: String) {
-        self.init()
-        dateFormat = format
-        locale = Locale.current
-    }
-}
-
-extension String {
-    func toDate (dateFormatter: DateFormatter) -> Date? {
-        return dateFormatter.date(from: self)
-    }
-}
-
-extension Date {
-    func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
-        return calendar.dateComponents(Set(components), from: self)
-    }
-
-    func get(_ component: Calendar.Component, calendar: Calendar = Calendar.current) -> Int {
-        return calendar.component(component, from: self)
-    }
-}

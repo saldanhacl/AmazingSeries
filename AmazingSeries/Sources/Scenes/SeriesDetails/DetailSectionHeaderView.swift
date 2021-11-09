@@ -13,6 +13,8 @@ final class DetailSectionHeaderView: CodedView {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 2
+        view.textColor = .white
+        view.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return view
     }()
     

@@ -51,6 +51,9 @@
 		0740DC7A2738B66B0050A135 /* DetailEpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC792738B66B0050A135 /* DetailEpisodeTableViewCell.swift */; };
 		0740DC7C2738B9AB0050A135 /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740DC7B2738B9AB0050A135 /* ContentSizedTableView.swift */; };
 		079FE5152739CDF1008E1C5D /* SearchSeriesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FE5142739CDF1008E1C5D /* SearchSeriesWorker.swift */; };
+		079FE5172739F420008E1C5D /* Date+GetComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FE5162739F420008E1C5D /* Date+GetComponents.swift */; };
+		079FE5192739F460008E1C5D /* DateFormatter+StringInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FE5182739F460008E1C5D /* DateFormatter+StringInit.swift */; };
+		079FE51B2739F480008E1C5D /* String+ToDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079FE51A2739F480008E1C5D /* String+ToDate.swift */; };
 		07A9C206273967AE005499D8 /* EpisodeDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C200273967AE005499D8 /* EpisodeDetailsPresenter.swift */; };
 		07A9C209273967AE005499D8 /* EpisodeDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C203273967AE005499D8 /* EpisodeDetailsModels.swift */; };
 		07A9C20A273967AE005499D8 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C204273967AE005499D8 /* EpisodeDetailsViewController.swift */; };
@@ -107,6 +110,9 @@
 		0740DC792738B66B0050A135 /* DetailEpisodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		0740DC7B2738B9AB0050A135 /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		079FE5142739CDF1008E1C5D /* SearchSeriesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSeriesWorker.swift; sourceTree = "<group>"; };
+		079FE5162739F420008E1C5D /* Date+GetComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+GetComponents.swift"; sourceTree = "<group>"; };
+		079FE5182739F460008E1C5D /* DateFormatter+StringInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+StringInit.swift"; sourceTree = "<group>"; };
+		079FE51A2739F480008E1C5D /* String+ToDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ToDate.swift"; sourceTree = "<group>"; };
 		07A9C200273967AE005499D8 /* EpisodeDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsPresenter.swift; sourceTree = "<group>"; };
 		07A9C203273967AE005499D8 /* EpisodeDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsModels.swift; sourceTree = "<group>"; };
 		07A9C204273967AE005499D8 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +213,9 @@
 				0740DC56273869F50050A135 /* UIImageView+Network.swift */,
 				0740DC6F2738A0D60050A135 /* UILabel+HTML.swift */,
 				0740DC712738A1BC0050A135 /* UIColor+hexString.swift */,
+				079FE5162739F420008E1C5D /* Date+GetComponents.swift */,
+				079FE5182739F460008E1C5D /* DateFormatter+StringInit.swift */,
+				079FE51A2739F480008E1C5D /* String+ToDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -446,7 +455,10 @@
 				0740DC5E273872850050A135 /* SeriesDetailsPresenter.swift in Sources */,
 				07A9C20A273967AE005499D8 /* EpisodeDetailsViewController.swift in Sources */,
 				0740DC302738185C0050A135 /* ViewCode.swift in Sources */,
+				079FE5192739F460008E1C5D /* DateFormatter+StringInit.swift in Sources */,
+				079FE5172739F420008E1C5D /* Date+GetComponents.swift in Sources */,
 				0740DC742738A3100050A135 /* DetailSeasonTableViewCell.swift in Sources */,
+				079FE51B2739F480008E1C5D /* String+ToDate.swift in Sources */,
 				0740DC4A27383A8D0050A135 /* GetSeriesWorker.swift in Sources */,
 				0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */,
 				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
