@@ -31,6 +31,7 @@ final class SeriesDetailsView: CodedView {
     
     private struct Constants {
         static let bannerHeight: CGFloat = 360.0
+        static let tableViewTopInset: CGFloat = 720.0
     }
     
     // MARK: Dependencies
@@ -55,7 +56,7 @@ final class SeriesDetailsView: CodedView {
         view.allowsSelection = false
         view.backgroundColor = .clear
         view.contentInsetAdjustmentBehavior = .never
-        view.contentInset = UIEdgeInsets(top: Constants.bannerHeight, left: .zero, bottom: .zero, right: .zero)
+        view.contentInset = UIEdgeInsets(top: Constants.tableViewTopInset, left: .zero, bottom: .zero, right: .zero)
         view.register(DetailHeaderTableViewCell.self, forCellReuseIdentifier: DetailHeaderTableViewCell.className)
         view.register(DetailDescriptionTableViewCell.self, forCellReuseIdentifier: DetailDescriptionTableViewCell.className)
         view.register(DetailSeasonTableViewCell.self, forCellReuseIdentifier: DetailSeasonTableViewCell.className)
