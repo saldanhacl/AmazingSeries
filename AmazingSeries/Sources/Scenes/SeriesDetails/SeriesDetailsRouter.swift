@@ -9,6 +9,7 @@ import UIKit
 
 protocol SeriesDetailsRoutingLogic {
     func goToEpisode(_ data: Episodes.ViewModel.Episode)
+    func goBack()
 }
 
 final class SeriesDetailsRouter {
@@ -37,9 +38,13 @@ extension SeriesDetailsRouter: SeriesDetailsRoutingLogic {
             number: data.number,
             season: data.season,
             summary: data.summary,
-            image: data.cover)
+            image: data.originalImage)
         )
         
         viewController?.present(destination, animated: true)
+    }
+    
+    func goBack() {
+        viewController?.navigationController?.popViewController(animated: true)
     }
 }

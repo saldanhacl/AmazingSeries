@@ -23,6 +23,21 @@ final class SeriesDetailsViewController: UIViewController {
     
     private var contentView: SeriesDetailsViewProtocol?
     
+    // MARK: View Elements
+    
+    private lazy var backButton: UIButton = {
+        let view = UIButton()
+        view.tintColor = .white
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 16.0
+        view.frame = CGRect(x: .zero, y: .zero, width: 32, height: 32)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+        view.setImage(UIImage(named: "back_arrow"), for: .normal)
+
+        view.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return view
+    }()
+   
     // MARK: Initialization
     
     init(interactor: SeriesDetailsBusinessLogic, router: SeriesDetailsRoutingLogic) {
@@ -52,12 +67,13 @@ final class SeriesDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+    
+    // MARK: Actions
+    
+    @objc private func backButtonTapped(sender: UIButton) {
+        router.goBack()
     }
 }
 

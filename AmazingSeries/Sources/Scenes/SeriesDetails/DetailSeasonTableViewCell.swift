@@ -148,7 +148,7 @@ extension DetailSeasonTableViewCell: UITableViewDataSource {
         guard let episode = seasonViewModel?.episodes[indexPath.row] else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(with: DetailEpisodeTableViewCell.self, for: indexPath)
         
-        cell.setupData(title: episode.name, coverImageURL: episode.cover)
+        cell.setupData(title: episode.name, coverImageURL: episode.coverImage)
         return cell
     }
 }

@@ -26,7 +26,8 @@ final class EpisodeDetailsConfigurator: EpisodeDetailsConfiguratorProtocol {
         let interactor = EpisodeDetailsInteractor(presenter: presenter, episode: .init(
             name: parameters.name,
             number: parameters.number,
-            summary: parameters.season,
+            season: parameters.season,
+            summary: parameters.summary,
             cover: parameters.image)
         )
         

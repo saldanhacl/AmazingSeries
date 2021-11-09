@@ -44,7 +44,8 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
                     season: seasonString,
                     number: String(episode.number),
                     summary: episode.summary,
-                    cover: episode.image.medium
+                    coverImage: episode.image.medium,
+                    originalImage: episode.image.original
                 )
             })
         }

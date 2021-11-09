@@ -74,7 +74,8 @@ enum Episodes {
             let season: String
             let number: String
             let summary: String
-            let cover: String
+            let coverImage: String
+            let originalImage: String
         }
     }
 }
