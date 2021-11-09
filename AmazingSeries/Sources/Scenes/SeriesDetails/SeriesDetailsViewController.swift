@@ -10,6 +10,7 @@ import UIKit
 protocol SeriesDetailsDisplayLogic: AnyObject {
     func displayData(_ data: SeriesDetails.ViewModel)
     func displaySeasonsData(_ data: [Episodes.ViewModel.Season])
+    func displayErrorState()
 }
 
 final class SeriesDetailsViewController: UIViewController {
@@ -87,6 +88,10 @@ extension SeriesDetailsViewController: SeriesDetailsDisplayLogic {
     func displaySeasonsData(_ data: [Episodes.ViewModel.Season]) {
         contentView?.showSeasonsData(data)
     }
+    
+    func displayErrorState() {
+        contentView?.showErrorView()
+    }
 }
 
 // MARK: SeriesDetailsViewDelegate
@@ -94,5 +99,9 @@ extension SeriesDetailsViewController: SeriesDetailsDisplayLogic {
 extension SeriesDetailsViewController: SeriesDetailsViewDelegate {
     func didSelectEpisode(_ data: Episodes.ViewModel.Episode) {
         router.goToEpisode(data)
+    }
+    
+    func reloadData() {
+        interactor.onViewDidLoad()
     }
 }

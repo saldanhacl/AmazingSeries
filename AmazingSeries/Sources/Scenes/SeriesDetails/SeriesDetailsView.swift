@@ -12,10 +12,12 @@ protocol SeriesDetailsViewProtocol {
     
     func showData(_ data: SeriesDetails.ViewModel)
     func showSeasonsData(_ data: [Episodes.ViewModel.Season])
+    func showErrorView()
 }
 
 protocol SeriesDetailsViewDelegate: AnyObject {
     func didSelectEpisode(_ data: Episodes.ViewModel.Episode)
+    func reloadData()
 }
 
 final class SeriesDetailsView: CodedView {
@@ -63,6 +65,12 @@ final class SeriesDetailsView: CodedView {
         return view
     }()
     
+    private let errorView: ErrorView = {
+        let view = ErrorView()
+        view.isHidden = true
+        return view
+    }()
+    
     // MARK: Constraints
     
     private lazy var posterHeightConstraint: NSLayoutConstraint = {
@@ -84,14 +92,18 @@ final class SeriesDetailsView: CodedView {
     override func buildHierarchy() {
         addSubview(posterImageView)
         addSubview(pageTableView)
+        addSubview(errorView)
     }
 
     override func setupConstraints() {
         constrainPageTableView()
+        constrainErrorView()
     }
     
     override func aditionalConfiguration() {
         backgroundColor = .black
+        
+        errorView.delegate = self
     }
     
     private func constrainPageTableView() {
@@ -102,6 +114,14 @@ final class SeriesDetailsView: CodedView {
             trailing: trailingAnchor,
             paddingLeading: 16.0,
             paddingTrailing: 16.0
+        )
+    }
+    
+    private func constrainErrorView() {
+        errorView.centerWithSuperview()
+        errorView.anchor(
+            width: 160,
+            height: 280
         )
     }
 }
@@ -218,5 +238,19 @@ extension SeriesDetailsView: SeriesDetailsViewProtocol {
     func showSeasonsData(_ data: [Episodes.ViewModel.Season]) {
         seasonsViewModel = data
         pageTableView.reloadSections([Section.seasons.rawValue], with: .automatic)
+    }
+    
+    func showErrorView() {
+        posterImageView.isHidden = true
+        pageTableView.isHidden = true
+        errorView.isHidden = false
+    }
+}
+
+// MARK: ErrorViewDelegate
+
+extension SeriesDetailsView: ErrorViewDelegate {
+    func didTapReloadButton() {
+        delegate?.reloadData()
     }
 }

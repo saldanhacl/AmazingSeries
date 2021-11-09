@@ -52,8 +52,7 @@ extension SeriesDetailsInteractor: SeriesDetailsBusinessLogic {
                 case let .success(response):
                     self?.presenter.presentData(response)
                 case .failure:
-                    // TODO: add failure presentation
-                    break
+                    self?.presenter.presentError()
                 }
             }
         }
@@ -66,8 +65,7 @@ extension SeriesDetailsInteractor: SeriesDetailsBusinessLogic {
                 case let .success(response):
                     self?.presenter.presentEpisodesData(response)
                 case .failure:
-                    // TODO: add failure presentation
-                    break
+                    self?.presenter.presentError()
                 }
             }
         }

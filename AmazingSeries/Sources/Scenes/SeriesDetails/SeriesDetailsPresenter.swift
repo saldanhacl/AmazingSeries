@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SeriesDetailsPresentationLogic {
+    func presentError()
     func presentData(_ data: SeriesDetails.Response)
     func presentEpisodesData(_ data: [Episodes.Response])
 }
@@ -51,6 +52,10 @@ extension SeriesDetailsPresenter: SeriesDetailsPresentationLogic {
         }
         
         viewController?.displaySeasonsData(viewModels)
+    }
+    
+    func presentError() {
+        viewController?.displayErrorState()
     }
     
     private func getScheduleString(_ schedule: SeriesDetails.Response.Schedule?) -> String {
