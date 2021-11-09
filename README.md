@@ -2,19 +2,23 @@
 
 AmazingSeries is sample project to practice some skills.
 
-### Description
+## Description
 
 AmazingSeries use TVMaze API to list, search and show some TV Series. 📺
+
+## Demo
+
+![Alt Text](https://media.giphy.com/media/aT4eEaRTH8ZfHXyOsk/giphy.gif)
  
-### Requirements
+## Requirements
 
 - iOS 11.0+
 - Xcode 10.0+
 
-### External Libraries
+## External Libraries
 - Kingfisher: for image download and cache.
 
-### Installation
+## Installation
 
 Download the source code by runing:
 
