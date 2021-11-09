@@ -10,7 +10,6 @@ import UIKit
 
 protocol ListSeriesDisplayLogic: AnyObject {
     func displaySeriesList(_ data: [ListSeries.ViewModel])
-    func displayMoreSeries(_ data: [ListSeries.ViewModel])
 }
 
 final class ListSeriesViewController: UIViewController {
@@ -57,10 +56,6 @@ final class ListSeriesViewController: UIViewController {
 extension ListSeriesViewController: ListSeriesDisplayLogic {
     func displaySeriesList(_ data: [ListSeries.ViewModel]) {
         contentView?.showSeriesList(data)
-    }
-    
-    func displayMoreSeries(_ data: [ListSeries.ViewModel]) {
-        contentView?.appendSeriesData(data)
     }
 }
 

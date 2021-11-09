@@ -19,7 +19,7 @@ final class ListSeriesInteractor {
     
     private let presenter: ListSeriesPresentationLogic
     private let getSeriesWorker: GetSeriesWorkerProtocol
-    private let searchSeriesWorker: SearchSeriesWorker
+    private let searchSeriesWorker: SearchSeriesWorkerProtocol
     
     // MARK: Private properties
     
@@ -31,7 +31,7 @@ final class ListSeriesInteractor {
     init(
         presenter: ListSeriesPresentationLogic,
         getSeriesWorker: GetSeriesWorkerProtocol,
-        searchSeriesWorker: SearchSeriesWorker
+        searchSeriesWorker: SearchSeriesWorkerProtocol
     ) {
         self.presenter = presenter
         self.getSeriesWorker = getSeriesWorker

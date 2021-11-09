@@ -12,7 +12,6 @@ protocol ListSeriesViewProtocol {
     var delegate: ListSeriesViewDelegate? { get set }
     
     func showSeriesList(_ data: [ListSeries.ViewModel])
-    func appendSeriesData(_ data: [ListSeries.ViewModel])
 }
 
 protocol ListSeriesViewDelegate: AnyObject {
@@ -179,11 +178,6 @@ extension ListSeriesView: UISearchBarDelegate {
 extension ListSeriesView: ListSeriesViewProtocol {
     func showSeriesList(_ data: [ListSeries.ViewModel]) {
         listSeriesViewModels = data
-        seriesTableView.reloadData()
-    }
-    
-    func appendSeriesData(_ data: [ListSeries.ViewModel]) {
-        listSeriesViewModels.append(contentsOf: data)
         seriesTableView.reloadData()
     }
 }
