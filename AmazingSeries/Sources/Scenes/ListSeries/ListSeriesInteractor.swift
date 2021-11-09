@@ -20,22 +20,28 @@ final class ListSeriesInteractor {
     private let presenter: ListSeriesPresentationLogic
     private let getSeriesWorker: GetSeriesWorkerProtocol
     private let searchSeriesWorker: SearchSeriesWorkerProtocol
+    private let dispatchQueue: DispatchQueueProtocol
     
     // MARK: Private properties
     
     private var currentPage: Int = .zero
-    private var seriesList: [ListSeries.Response] = []
+    
+    // MARK: Internal properties
+    
+    var seriesList: [ListSeries.Response] = []
     
     // MARK: Initialization
     
     init(
         presenter: ListSeriesPresentationLogic,
         getSeriesWorker: GetSeriesWorkerProtocol,
-        searchSeriesWorker: SearchSeriesWorkerProtocol
+        searchSeriesWorker: SearchSeriesWorkerProtocol,
+        dispatchQueue: DispatchQueueProtocol
     ) {
         self.presenter = presenter
         self.getSeriesWorker = getSeriesWorker
         self.searchSeriesWorker = searchSeriesWorker
+        self.dispatchQueue = dispatchQueue
     }
 }
 
@@ -62,8 +68,8 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
     // MARK: Private methods
     
     private func getSeries(page: Int, append: Bool = false) {
-        getSeriesWorker.listShows(page: page) { result in
-            DispatchQueue.main.async { [weak self] in
+        getSeriesWorker.listShows(page: page) { [weak self] result in
+            self?.dispatchQueue.async {
                 switch result {
                 case let .success(response):
                     guard var seriesList = self?.seriesList, append else {
@@ -85,8 +91,8 @@ extension ListSeriesInteractor: ListSeriesBusinessLogic {
     }
     
     private func loadSeries(by query: String) {
-        searchSeriesWorker.search(by: query) { result in
-            DispatchQueue.main.async { [weak self] in
+        searchSeriesWorker.search(by: query) { [weak self] result in
+            self?.dispatchQueue.async {
                 switch result {
                 case let .success(response):
                     let series: [ListSeries.Response] = response.map { $0.show }

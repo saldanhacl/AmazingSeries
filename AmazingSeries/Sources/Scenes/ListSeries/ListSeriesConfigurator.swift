@@ -21,7 +21,13 @@ final class ListSeriesConfigurator: ListSeriesConfiguratorProtocol {
         let seriesDetailsConfigurator = SeriesDetailsConfigurator()
         let router = ListSeriesRouter(sceneFactory: seriesDetailsConfigurator)
         let presenter = ListSeriesPresenter()
-        let interactor = ListSeriesInteractor(presenter: presenter, getSeriesWorker: getSeriesWorker, searchSeriesWorker: searchSeriesWorker)
+        let interactor = ListSeriesInteractor(
+            presenter: presenter,
+            getSeriesWorker: getSeriesWorker,
+            searchSeriesWorker: searchSeriesWorker,
+            dispatchQueue: DispatchQueue.main
+        )
+        
         let viewController = ListSeriesViewController(interactor: interactor, router: router)
         
         presenter.viewController = viewController

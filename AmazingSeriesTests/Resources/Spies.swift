@@ -10,7 +10,7 @@ import Foundation
 
 final class ListSeriesPresenterSpy: ListSeriesPresentationLogic {
     var presentSeriesDataCalled = false
-    var data: [ListSeries.Response]?
+    var data: [ListSeries.Response] = []
     
     func presentSeriesData(_ data: [ListSeries.Response]) {
         presentSeriesDataCalled = true

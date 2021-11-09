@@ -65,6 +65,8 @@
 		07A9C20A273967AE005499D8 /* EpisodeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C204273967AE005499D8 /* EpisodeDetailsViewController.swift */; };
 		07A9C20B273967AE005499D8 /* EpisodeDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C205273967AE005499D8 /* EpisodeDetailsInteractor.swift */; };
 		07A9C20D27396938005499D8 /* EpisodeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9C20C27396938005499D8 /* EpisodeDetailsView.swift */; };
+		07B800B5273B1F4E004D1486 /* DispatchQueueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B800B4273B1F4E004D1486 /* DispatchQueueProtocol.swift */; };
+		07B800B7273B1F8F004D1486 /* DispatchQueue+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B800B6273B1F8F004D1486 /* DispatchQueue+Protocol.swift */; };
 		07E10770273970AE00D6F493 /* EpisodeDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E1076F273970AE00D6F493 /* EpisodeDetailsConfigurator.swift */; };
 		C6536083D0CEDD0FAB4E2288 /* Pods_AmazingSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */; };
 /* End PBXBuildFile section */
@@ -141,6 +143,8 @@
 		07A9C204273967AE005499D8 /* EpisodeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsViewController.swift; sourceTree = "<group>"; };
 		07A9C205273967AE005499D8 /* EpisodeDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsInteractor.swift; sourceTree = "<group>"; };
 		07A9C20C27396938005499D8 /* EpisodeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsView.swift; sourceTree = "<group>"; };
+		07B800B4273B1F4E004D1486 /* DispatchQueueProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueProtocol.swift; sourceTree = "<group>"; };
+		07B800B6273B1F8F004D1486 /* DispatchQueue+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Protocol.swift"; sourceTree = "<group>"; };
 		07E1076F273970AE00D6F493 /* EpisodeDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeDetailsConfigurator.swift; sourceTree = "<group>"; };
 		976E4E2A06DE5321BD5D85FD /* Pods-AmazingSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmazingSeries.debug.xcconfig"; path = "Target Support Files/Pods-AmazingSeries/Pods-AmazingSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD10993387CE4D23E6B358A /* Pods_AmazingSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AmazingSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +234,7 @@
 			children = (
 				0740DC47273839080050A135 /* NetworkProtocols.swift */,
 				0740DC512738678F0050A135 /* ImageDownloaderProtocol.swift */,
+				07B800B4273B1F4E004D1486 /* DispatchQueueProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				079FE5162739F420008E1C5D /* Date+GetComponents.swift */,
 				079FE5182739F460008E1C5D /* DateFormatter+StringInit.swift */,
 				079FE51A2739F480008E1C5D /* String+ToDate.swift */,
+				07B800B6273B1F8F004D1486 /* DispatchQueue+Protocol.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				0740DC26273814CB0050A135 /* ListSeriesConfigurator.swift in Sources */,
 				07A9C20B273967AE005499D8 /* EpisodeDetailsInteractor.swift in Sources */,
 				0740DC20273814330050A135 /* ListSeriesInteractor.swift in Sources */,
+				07B800B5273B1F4E004D1486 /* DispatchQueueProtocol.swift in Sources */,
 				0740DC66273876430050A135 /* SeriesDetailsModels.swift in Sources */,
 				0740DC722738A1BC0050A135 /* UIColor+hexString.swift in Sources */,
 				07A9C209273967AE005499D8 /* EpisodeDetailsModels.swift in Sources */,
@@ -562,6 +569,7 @@
 				0740DC522738678F0050A135 /* ImageDownloaderProtocol.swift in Sources */,
 				0740DC48273839080050A135 /* NetworkProtocols.swift in Sources */,
 				07E10770273970AE00D6F493 /* EpisodeDetailsConfigurator.swift in Sources */,
+				07B800B7273B1F8F004D1486 /* DispatchQueue+Protocol.swift in Sources */,
 				0740DC68273878290050A135 /* APIService.swift in Sources */,
 				0740DC6E27389DAE0050A135 /* DetailDescriptionTableViewCell.swift in Sources */,
 				0740DC34273820280050A135 /* ListSeriesRouter.swift in Sources */,

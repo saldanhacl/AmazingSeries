@@ -14,3 +14,9 @@ extension ListSeries.Response {
 extension ListSeries.ViewModel {
     static let mock = ListSeries.ViewModel(id: 1, title: "Series", rating: "8.0", genres: "GenreA", posterURL: nil)
 }
+
+final class DispatchQueueMock: DispatchQueueProtocol {
+    func async(execute work: @escaping @convention(block) () -> Void) {
+        work()
+    }
+}
