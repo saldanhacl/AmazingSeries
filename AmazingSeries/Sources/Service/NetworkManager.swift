@@ -12,8 +12,6 @@ class NetworkManager: NetworkManagerProtocol {
         
         let urlRequest = buildURLRequest(request)
         
-        Swift.print("Request: \(urlRequest)")
-        
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             do {
                 if let error = error {
@@ -28,17 +26,8 @@ class NetworkManager: NetworkManagerProtocol {
                 let decodedObject = try JSONDecoder().decode(T.self, from: data)
                 
                 completion(.success(decodedObject))
-            } catch DecodingError.keyNotFound(let key, let context) {
-                Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
-            } catch DecodingError.valueNotFound(let type, let context) {
-                Swift.print("could not find type \(type) in JSON: \(context.debugDescription)")
-            } catch DecodingError.typeMismatch(let type, let context) {
-                Swift.print("type mismatch for type \(type) in JSON: \(context.debugDescription)")
-            } catch DecodingError.dataCorrupted(let context) {
-                Swift.print("data found to be corrupted in JSON: \(context.debugDescription)")
-            } catch let error as NSError {
-                NSLog("Error in read(from:ofType:) domain= \(error.domain), description= \(error.localizedDescription)")
-
+            } catch {
+                completion(.failure(error))
             }
         }.resume()
     }
