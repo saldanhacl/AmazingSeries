@@ -6,6 +6,5 @@ target 'AmazingSeries' do
   use_frameworks!
 
   # Pods for AmazingSeries
-  pod 'Kingfisher', '~> 6.3.1'
 
 end

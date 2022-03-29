@@ -46,6 +46,12 @@ final class SeriesTableViewCell: CodedTableViewCell {
         return view
     }()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        posterImageView.image = nil
+    }
+    
     // MARK: Coded View
     
     override func buildHierarchy() {

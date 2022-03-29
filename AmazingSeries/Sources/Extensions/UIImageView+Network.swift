@@ -15,7 +15,9 @@ extension UIImageView {
     ) {
         imageDownloader.fetchImage(on: self, urlString: urlString, placeholder: placeholder) { [weak self] data, error in
             if let data = data {
-                self?.image = data
+                DispatchQueue.main.async {
+                    self?.image = data
+                }
             }
         }
     }

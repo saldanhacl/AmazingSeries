@@ -6,19 +6,26 @@
 //
 
 import Foundation
-import Kingfisher
+import UIKit
 
 final class ImageDownloader: ImageDownloaderProtocol {
+    private let cache = NSCache<NSString, UIImage>()
+    
     func fetchImage(on imageView: UIImageView, urlString: String, placeholder: UIImage?, completion: @escaping (UIImage?, Error?) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
-        imageView.kf.setImage(with: url, placeholder: placeholder) { result in
-            switch result {
-            case let .success(result):
-                completion(result.image, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
+        if let cachedImage = cache.object(forKey: NSString(string: urlString)) {
+            completion(cachedImage, nil)
+            return
         }
+        
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, let image = UIImage(data: data), let self = self else { return }
+            
+            self.cache.setObject(image, forKey: NSString(string: urlString))
+            completion(image, nil)
+        }
+        
+        task.resume()
     }
 }
