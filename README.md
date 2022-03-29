@@ -16,7 +16,7 @@ AmazingSeries use TVMaze API to list, search and show some TV Series. 📺
 - Xcode 10.0+
 
 ## External Libraries
-- Kingfisher: for image download and cache.
+- None!
 
 ## Installation
 
