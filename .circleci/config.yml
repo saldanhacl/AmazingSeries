@@ -83,69 +83,12 @@ jobs:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
                 SCAN_TEST_WITHOUT_BUILDING: "true"
-                SCAN_ONLY_TESTING: "AmazingSeriesUITests"
                 SCAN_DERIVED_DATA_PATH: *derived_data_path
                 FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
         - run:
             command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
             when: always
 
-  ui-tests2:
-    <<: *defaults
-    steps:
-        - *attach_workspace
-        - *pre_run_iphone
-        - run:
-            name: Run ui tests
-            command: bundle exec fastlane tests
-            environment:
-                SCAN_DEVICE: iPhone 13
-                SCAN_SCHEME: AmazingSeriesUITests
-                SCAN_TEST_WITHOUT_BUILDING: "true"
-                SCAN_ONLY_TESTING: "AmazingSeriesUITests2"
-                SCAN_DERIVED_DATA_PATH: *derived_data_path
-                FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
-        - run:
-            command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
-            when: always
-
-  ui-tests3:
-      <<: *defaults
-      steps:
-          - *attach_workspace
-          - *pre_run_iphone
-          - run:
-              name: Run ui tests
-              command: bundle exec fastlane tests
-              environment:
-                  SCAN_DEVICE: iPhone 13
-                  SCAN_SCHEME: AmazingSeriesUITests
-                  SCAN_TEST_WITHOUT_BUILDING: "true"
-                  SCAN_ONLY_TESTING: "AmazingSeriesUITests3"
-                  SCAN_DERIVED_DATA_PATH: *derived_data_path
-                  FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
-          - run:
-              command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
-              when: always
-    
-  ui-tests4:
-      <<: *defaults
-      steps:
-          - *attach_workspace
-          - *pre_run_iphone
-          - run:
-              name: Run ui tests
-              command: bundle exec fastlane tests
-              environment:
-                  SCAN_DEVICE: iPhone 13
-                  SCAN_SCHEME: AmazingSeriesUITests
-                  SCAN_TEST_WITHOUT_BUILDING: "true"
-                  SCAN_ONLY_TESTING: "AmazingSeriesUITests4"
-                  SCAN_DERIVED_DATA_PATH: *derived_data_path
-                  FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
-          - run:
-              command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
-              when: always
 
 workflows:
   version: 2
@@ -157,14 +100,5 @@ workflows:
           requires:
               - fetch
       - ui-tests:
-          requires:
-            - amazingseries_uitests_scheme_build
-      - ui-tests2:
-          requires:
-            - amazingseries_uitests_scheme_build
-      - ui-tests3:
-          requires:
-            - amazingseries_uitests_scheme_build
-      - ui-tests4:
           requires:
             - amazingseries_uitests_scheme_build
