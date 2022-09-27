@@ -7,9 +7,11 @@ platform :ios do
 
   lane :tests do
   run_tests(
-	    workspace: "AmazingSeries.xcworkspace",
+      workspace: "AmazingSeries.xcworkspace",
       devices: ["iPhone 13"],
-      scheme: "AmazingSeriesUITests"
+      scheme: "AmazingSeriesUITests",
+      skip_detect_devices: true,
+      skip_build: true
    )
   end
 end
