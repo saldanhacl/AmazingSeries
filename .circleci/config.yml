@@ -60,7 +60,7 @@ jobs:
       - *attach_workspace
       - run:
           name: Build for testing
-          command: bundle exec fastlane scan
+          command: bundle exec fastlane tests
           environment:
               SCAN_DEVICE: iPhone 13
               SCAN_SCHEME: AmazingSeriesUITests
@@ -78,7 +78,7 @@ jobs:
         - *pre_run_iphone
         - run:
             name: Run ui tests
-            command: bundle exec fastlane scan
+            command: bundle exec fastlane tests
             environment:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
@@ -97,7 +97,7 @@ jobs:
         - *pre_run_iphone
         - run:
             name: Run ui tests
-            command: bundle exec fastlane scan
+            command: bundle exec fastlane tests
             environment:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
@@ -116,7 +116,7 @@ jobs:
           - *pre_run_iphone
           - run:
               name: Run ui tests
-              command: bundle exec fastlane scan
+              command: bundle exec fastlane tests
               environment:
                   SCAN_DEVICE: iPhone 13
                   SCAN_SCHEME: AmazingSeriesUITests
@@ -135,7 +135,7 @@ jobs:
           - *pre_run_iphone
           - run:
               name: Run ui tests
-              command: bundle exec fastlane scan
+              command: bundle exec fastlane tests
               environment:
                   SCAN_DEVICE: iPhone 13
                   SCAN_SCHEME: AmazingSeriesUITests
