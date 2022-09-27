@@ -63,16 +63,6 @@ jobs:
     steps:
         - *attach_workspace
         - *pre_run_iphone
-
-        # Build the app for testing
-        - run:
-            name: Build for testing
-            command: bundle exec fastlane scan
-            environment:
-                SCAN_DEVICE: iPhone 13
-                SCAN_SCHEME: AmazingSeriesUITests
-                SCAN_BUILD_FOR_TESTING: "true"
-                SCAN_DERIVED_DATA_PATH: *derived_data_path
         - run:
             name: Run ui tests
             command: bundle exec fastlane scan
