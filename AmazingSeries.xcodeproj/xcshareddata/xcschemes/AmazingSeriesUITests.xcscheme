@@ -32,17 +32,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07520977273ACB51009B5A32"
-               BuildableName = "AmazingSeriesTests.xctest"
-               BlueprintName = "AmazingSeriesTests"
-               ReferencedContainer = "container:AmazingSeries.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "049EC46428E3285200A49DBB"
                BuildableName = "AmazingSeriesUITests.xctest"
                BlueprintName = "AmazingSeriesUITests"
