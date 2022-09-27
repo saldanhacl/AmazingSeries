@@ -1,29 +1,100 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine.
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-jobs:
-  build-and-test:
-    macos:
-      xcode: "13.4.1"
+
+orbs:
+  macos: circleci/macos@2.3.2
+
+references:
+  defaults: &defaults
     working_directory: /Users/distiller/project
+    macos:
+        xcode: "13.4.1"
+
+  derived_data_path: &derived_data_path build
+
+  persist_data: &persist_workspace
+          persist_to_workspace:
+              root: .
+              paths:
+                  - .
+
+  attach_data: &attach_workspace
+        attach_workspace:
+            at: .      
+
+  pre_run_iphone: &pre_run_iphone
+      macos/preboot-simulator:
+          version: "15.5"
+          platform: "iOS"
+          device: "iPhone 13"            
+
+jobs:
+  fetch:
+    <<: *defaults
+    steps:
+      - checkout
+      - run: bundle install
+      - *persist_workspace
+  
+  build-for-test:
+    <<: *defaults
     environment:
       SCAN_DEVICE: iPhone 13
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
-    shell: /bin/bash --login -o pipefail
     steps:
-      - checkout
-      - run: bundle install
+      - *attach_workspace
       - run:
-          name: Fastlane
-          command: bundle exec fastlane $FASTLANE_LANE
-      - store_artifacts:
-          path: output
-      - store_test_results:
-          path: output/scan
+          name: Build for testing
+          command: bundle exec fastlane scan
+          environment:
+              SCAN_DEVICE: iPhone 13
+              SCAN_SCHEME: AmazingSeriesUITests
+              SCAN_BUILD_FOR_TESTING: "true"
+              SCAN_DERIVED_DATA_PATH: *derived_data_path
+      - persist_to_workspace:
+          root: .
+          paths:
+              - *derived_data_path
+  
+  ui-tests:
+    <<: *defaults
+    steps:
+        - *attach_workspace
+        - *pre_run_iphone
+
+        # Build the app for testing
+        - run:
+            name: Build for testing
+            command: bundle exec fastlane scan
+            environment:
+                SCAN_DEVICE: iPhone 13
+                SCAN_SCHEME: AmazingSeriesUITests
+                SCAN_BUILD_FOR_TESTING: "true"
+                SCAN_DERIVED_DATA_PATH: *derived_data_path
+        - run:
+            name: Run ui tests
+            command: bundle exec fastlane scan
+            environment:
+                SCAN_DEVICE: iPhone 13
+                SCAN_SCHEME: AmazingSeriesUITests
+                SCAN_TEST_WITHOUT_BUILDING: "true"
+                SCAN_DERIVED_DATA_PATH: *derived_data_path
+                FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
+        - run:
+            command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
+            when: always
 
 workflows:
   version: 2
-  build-test-adhoc:
+  build-and-test:
     jobs:
-      - build-and-test
+      - fetch
+      - build-for-test:
+          name: amazingseries_uitests_scheme_build
+          requires:
+              - fetch
+      - ui-tests:
+          requires:
+            - amazingseries_uitests_scheme_build
