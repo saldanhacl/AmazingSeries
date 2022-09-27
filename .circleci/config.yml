@@ -22,6 +22,17 @@ references:
   attach_data: &attach_workspace
         attach_workspace:
             at: .      
+  
+  save_bundle: &save_bundle
+      save_cache:
+          key: circlev2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+  restore_bundle: &restore_bundle
+    restore_cache:
+        key: circlev2-{{ checksum "Gemfile.lock" }}
+        run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
 
   pre_run_iphone: &pre_run_iphone
       macos/preboot-simulator:
@@ -34,7 +45,9 @@ jobs:
     <<: *defaults
     steps:
       - checkout
+      - *restore_bundle
       - run: bundle install --path bundle
+      - *save_bundle
       - *persist_workspace
   
   build-for-test:
