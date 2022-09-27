@@ -35,9 +35,6 @@ jobs:
     steps:
       - checkout
       - run: bundle install --path bundle
-      - run:
-          name: Install CocoaPods
-          command: bundle exec pod install --repo-update --verbose
       - *persist_workspace
   
   build-for-test:
