@@ -46,7 +46,7 @@ jobs:
     steps:
       - checkout
       - *restore_bundle
-      - run: bundle install --local
+      - run: bundle install --path bundle
       - *save_bundle
       - *persist_workspace
   
