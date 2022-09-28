@@ -11,9 +11,7 @@ platform :ios do
       devices: ["iPhone 13"],
       scheme: "AmazingSeriesUITests",
       skip_detect_devices: true,
-      skip_build: true,
-      parallel_testing: true,
-      concurrent_workers: 4
+      skip_build: true
    )
   end
 end
