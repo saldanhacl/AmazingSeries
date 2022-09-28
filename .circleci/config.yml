@@ -32,7 +32,6 @@ references:
   restore_bundle: &restore_bundle
     restore_cache:
         key: circlev2-{{ checksum "Gemfile.lock" }}
-        run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
 
   pre_run_iphone: &pre_run_iphone
       macos/preboot-simulator:
@@ -46,7 +45,7 @@ jobs:
     steps:
       - checkout
       - *restore_bundle
-      - run: bundle install --path bundle
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - *save_bundle
       - *persist_workspace
   
@@ -60,12 +59,10 @@ jobs:
       - *attach_workspace
       - run:
           name: Build for testing
-          command: bundle exec fastlane tests
+          command: bundle exec fastlane build_for_ui_test
           environment:
               SCAN_DEVICE: iPhone 13
               SCAN_SCHEME: AmazingSeriesUITests
-              SCAN_BUILD_FOR_TESTING: "true"
-              SCAN_DERIVED_DATA_PATH: *derived_data_path
       - persist_to_workspace:
           root: .
           paths:
@@ -78,13 +75,10 @@ jobs:
         - *pre_run_iphone
         - run:
             name: Run ui tests
-            command: bundle exec fastlane tests
+            command: bundle exec fastlane ui_test_without_building
             environment:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
-                SCAN_TEST_WITHOUT_BUILDING: "true"
-                SCAN_DERIVED_DATA_PATH: *derived_data_path
-                FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: 120
         - run:
             command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
             when: always
