@@ -16,14 +16,47 @@ platform :ios do
    )
   end
 
-  lane :ui_test_without_building do |options|
+  lane :ui_test_1 do |options|
     scan(
       destination: "name=iPhone 13,OS=15.5",
       scheme: "AmazingSeriesUITests",
       devices: ["iPhone 13 (15.5)"],
-      only_testing: options[:tests],
       derived_data_path: "build",
-      test_without_building: true
+      test_without_building: true,
+      only_testing: ["AmazingSeriesUITests"]
+    )
+  end
+
+  lane :ui_test_2 do |options|
+    scan(
+      destination: "name=iPhone 13,OS=15.5",
+      scheme: "AmazingSeriesUITests",
+      devices: ["iPhone 13 (15.5)"],
+      derived_data_path: "build",
+      test_without_building: true,
+      only_testing: ["AmazingSeriesUITests2"]
+    )
+  end
+
+  lane :ui_test_3 do |options|
+    scan(
+      destination: "name=iPhone 13,OS=15.5",
+      scheme: "AmazingSeriesUITests",
+      devices: ["iPhone 13 (15.5)"],
+      derived_data_path: "build",
+      test_without_building: true,
+      only_testing: ["AmazingSeriesUITests3"]
+    )
+  end
+
+  lane :ui_test_4 do |options|
+    scan(
+      destination: "name=iPhone 13,OS=15.5",
+      scheme: "AmazingSeriesUITests",
+      devices: ["iPhone 13 (15.5)"],
+      derived_data_path: "build",
+      test_without_building: true,
+      only_testing: ["AmazingSeriesUITests4"]
     )
   end
 

@@ -64,14 +64,14 @@ jobs:
           paths:
               - *derived_data_path
   
-  ui-tests:
+  ui-tests-1:
     <<: *defaults
     steps:
         - *attach_workspace
         - *pre_run_iphone
         - run:
             name: Run ui tests
-            command: bundle exec fastlane ui_test_without_building
+            command: bundle exec fastlane ui_test_1
             environment:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
@@ -79,6 +79,49 @@ jobs:
             command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
             when: always
 
+  ui-tests-2:
+    <<: *defaults
+    steps:
+        - *attach_workspace
+        - *pre_run_iphone
+        - run:
+            name: Run ui tests
+            command: bundle exec fastlane ui_test_2
+            environment:
+                SCAN_DEVICE: iPhone 13
+                SCAN_SCHEME: AmazingSeriesUITests
+        - run:
+            command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
+            when: always
+  ui-tests-3:
+    <<: *defaults
+    steps:
+        - *attach_workspace
+        - *pre_run_iphone
+        - run:
+            name: Run ui tests
+            command: bundle exec fastlane ui_test_3
+            environment:
+                SCAN_DEVICE: iPhone 13
+                SCAN_SCHEME: AmazingSeriesUITests
+        - run:
+            command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
+            when: always
+
+  ui-tests-4:
+    <<: *defaults
+    steps:
+        - *attach_workspace
+        - *pre_run_iphone
+        - run:
+            name: Run ui tests
+            command: bundle exec fastlane ui_test_4
+            environment:
+                SCAN_DEVICE: iPhone 13
+                SCAN_SCHEME: AmazingSeriesUITests
+        - run:
+            command: mv fastlane/test_output/report.junit fastlane/test_output/ui_tests_report.xml
+            when: always
 
 workflows:
   version: 2
@@ -89,6 +132,15 @@ workflows:
           name: amazingseries_uitests_scheme_build
           requires:
               - fetch
-      - ui-tests:
+      - ui-tests-1:
+          requires:
+            - amazingseries_uitests_scheme_build
+      - ui-tests-2:
+          requires:
+            - amazingseries_uitests_scheme_build
+      - ui-tests-3:
+          requires:
+            - amazingseries_uitests_scheme_build
+      - ui-tests-4:
           requires:
             - amazingseries_uitests_scheme_build
