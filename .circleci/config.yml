@@ -4,7 +4,6 @@ version: 2.1
 
 orbs:
   macos: circleci/macos@2.3.2
-  bundle-install: toshimaru/bundle-install@0.3.1
 
 references:
   defaults: &defaults
@@ -49,7 +48,15 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - bundle-install/bundle-install
+      - restore_cache:
+          keys:
+            - bundle-cache-{{ checksum "Gemfile.lock" }}
+            - bundle-cache
+      - run: bundle install --jobs=4 --retry=3--path vendor/bundle
+      - save_cache:
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - bundle-cache
       - *persist_workspace
   
   build-for-test:
