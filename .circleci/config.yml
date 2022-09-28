@@ -4,6 +4,7 @@ version: 2.1
 
 orbs:
   macos: circleci/macos@2.3.2
+  bundle-install: toshimaru/bundle-install@0.3.1
 
 references:
   defaults: &defaults
@@ -49,9 +50,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - *restore_bundle
-      - run: ls .. && bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - *save_bundle
+      - bundle-install/bundle-install
       - *persist_workspace
   
   build-for-test:
