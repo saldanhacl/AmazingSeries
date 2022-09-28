@@ -73,6 +73,7 @@ jobs:
   
   ui-tests:
     <<: *defaults
+    parallelism: 4
     steps:
         - *attach_workspace
         - *pre_run_iphone
