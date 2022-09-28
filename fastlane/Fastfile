@@ -5,13 +5,26 @@ platform :ios do
     setup_circle_ci
   end
 
-  lane :tests do
-  run_tests(
+  lane :build_for_ui_test do
+    scan(
+      destination: "name=iPhone 13,OS=15.5",
       workspace: "AmazingSeries.xcworkspace",
-      devices: ["iPhone 13"],
+      devices: ["iPhone 13 (15.5)"],
       scheme: "AmazingSeriesUITests",
-      skip_detect_devices: true,
-      skip_build: true
+      derived_data_path: "build",
+      build_for_testing: true
    )
   end
+
+  lane :ui_test_without_building do |options|
+    scan(
+      destination: "name=iPhone 13,OS=15.5",
+      scheme: "AmazingSeriesUITests",
+      devices: ["iPhone 13 (15.5)"],
+      only_testing: options[:tests],
+      derived_data_path: "build",
+      test_without_building: true
+    )
+  end
+
 end
