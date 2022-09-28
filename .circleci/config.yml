@@ -45,7 +45,7 @@ jobs:
     steps:
       - checkout
       - *restore_bundle
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: bundle config set --local path 'vendor/bundle' || bundle install --jobs=4 --retry=3
       - *save_bundle
       - *persist_workspace
   
@@ -70,12 +70,19 @@ jobs:
   
   ui-tests:
     <<: *defaults
+    parallelism: 4 
     steps:
         - *attach_workspace
         - *pre_run_iphone
         - run:
             name: Run ui tests
-            command: bundle exec fastlane ui_test_without_building
+            command: |
+              CLASSNAMES=$(circleci tests glob "AmazingSeriesUITests/*.swift" \
+                | sed 's@/@.@g' \
+                | sed 's/.swift//' \
+                | circleci tests split --split-by=timings --timings-type=classname)
+              FASTLANE_ARGS=$(echo $CLASSNAMES | sed -e 's/\./\//g' -e 's/ /,/g')
+              bundle exec fastlane ui_test_without_building tests:$FASTLANE_ARGS
             environment:
                 SCAN_DEVICE: iPhone 13
                 SCAN_SCHEME: AmazingSeriesUITests
