@@ -39,42 +39,13 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "049EC46428E3285200A49DBB"
                BuildableName = "AmazingSeriesUITests.xctest"
                BlueprintName = "AmazingSeriesUITests"
-               ReferencedContainer = "container:AmazingSeries.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "044A17FA28E3630C000DB5DF"
-               BuildableName = "AmazingSeriesUITests2.xctest"
-               BlueprintName = "AmazingSeriesUITests2"
-               ReferencedContainer = "container:AmazingSeries.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "044A180928E36314000DB5DF"
-               BuildableName = "AmazingSeriesUITests3.xctest"
-               BlueprintName = "AmazingSeriesUITests3"
-               ReferencedContainer = "container:AmazingSeries.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "044A181828E36319000DB5DF"
-               BuildableName = "AmazingSeriesUITests4.xctest"
-               BlueprintName = "AmazingSeriesUITests4"
                ReferencedContainer = "container:AmazingSeries.xcodeproj">
             </BuildableReference>
          </TestableReference>
