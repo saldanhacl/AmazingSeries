@@ -17,7 +17,12 @@ references:
           persist_to_workspace:
               root: .
               paths:
-                  - .
+                - project/DerivedData/Build/Products # This is the built app that can then be ran against for testing
+                - project/fastlane # So we can run Fastlane on the parallel jobs
+                - project/Gemfile # So we can run Fastlane on the parallel jobs
+                - project/Gemfile.lock # So we can run Fastlane on the parallel jobs
+                - project/commit_author # Used for the Slack message integration in Fastlane
+                - .gem # So we can run Fastlane on the parallel jobs
 
   attach_data: &attach_workspace
         attach_workspace:
