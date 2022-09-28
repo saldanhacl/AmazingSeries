@@ -48,7 +48,7 @@ jobs:
           keys:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle && ls vendor/bundle/ruby/2.7.0/gems
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
@@ -65,7 +65,7 @@ jobs:
       - *attach_workspace
       - run:
           name: Build for testing
-          command: ls vendor/bundle/ruby/2.7.0/gems && bundle exec fastlane build_for_ui_test
+          command: ls && bundle exec fastlane build_for_ui_test
           environment:
               SCAN_DEVICE: iPhone 13
               SCAN_SCHEME: AmazingSeriesUITests
