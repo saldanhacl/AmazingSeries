@@ -50,7 +50,7 @@ jobs:
     steps:
       - checkout
       - *restore_bundle
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: bundle install --jobs=4 --retry=3 --path project/vendor/bundle
       - *save_bundle
       - *persist_workspace
   
