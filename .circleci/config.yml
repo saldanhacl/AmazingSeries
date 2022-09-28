@@ -22,6 +22,7 @@ references:
                 - Gemfile # So we can run Fastlane on the parallel jobs
                 - Gemfile.lock # So we can run Fastlane on the parallel jobs
                 - .gem # So we can run Fastlane on the parallel jobs
+                - vendor
 
   attach_data: &attach_workspace
         attach_workspace:
