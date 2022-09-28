@@ -50,7 +50,7 @@ jobs:
     steps:
       - checkout
       - *restore_bundle
-      - run: ls vendor/bundle/ruby/2.6.0/gems && bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: ls && bundle install --jobs=4 --retry=3 --path vendor/bundle
       - *save_bundle
       - *persist_workspace
   
