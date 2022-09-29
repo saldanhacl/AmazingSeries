@@ -141,6 +141,3 @@ workflows:
       - ui-tests-3:
           requires:
             - amazingseries_uitests_scheme_build
-      - ui-tests-4:
-          requires:
-            - amazingseries_uitests_scheme_build
