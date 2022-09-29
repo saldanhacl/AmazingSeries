@@ -23,7 +23,9 @@ platform :ios do
       devices: ["iPhone 13 (15.5)"],
       only_testing: options[:tests],
       derived_data_path: "build",
-      test_without_building: true
+      test_without_building: true,
+      parallel_testing: true,
+      concurrent_workers: 4
     )
   end
 
