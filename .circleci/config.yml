@@ -14,10 +14,10 @@ references:
   derived_data_path: &derived_data_path build
 
   persist_data: &persist_workspace
-          persist_to_workspace:
-              root: .
-              paths:
-                - .
+    persist_to_workspace:
+        root: .
+        paths:
+          - .
 
   attach_data: &attach_workspace
         attach_workspace:
@@ -62,7 +62,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-              - *derived_data_path
+              - build/Build/Products
   
   ui-tests-1:
     <<: *defaults
