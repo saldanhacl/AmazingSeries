@@ -60,16 +60,15 @@ jobs:
               SCAN_DEVICE: iPhone 13
               SCAN_SCHEME: AmazingSeriesUITests
       - persist_to_workspace:
-          root: .
+          root: build
           paths:
-              - build/Build/Products
-      - store_artifacts:
-          path: .
+              - Build/Products
   
   ui-tests-1:
     <<: *defaults
     steps:
-        - *attach_workspace
+        - attach_workspace:
+            at: build/Build/Products
         - *pre_run_iphone
         - run:
             name: Run ui tests
