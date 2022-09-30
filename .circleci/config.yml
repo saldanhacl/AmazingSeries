@@ -63,12 +63,17 @@ jobs:
           root: build
           paths:
               - Build/Products
+      - run:
+          command: tar -cvzf workspace.tar /Users/distiller
+      - store_artifacts: 
+          path: workspace.tar
+          destination: artifacts
   
   ui-tests-1:
     <<: *defaults
     steps:
         - attach_workspace:
-            at: build/Build/Products
+            at: build
         - *pre_run_iphone
         - run:
             name: Run ui tests
