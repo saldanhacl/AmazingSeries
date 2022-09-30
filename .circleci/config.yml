@@ -64,7 +64,7 @@ jobs:
           paths:
               - Build/Products
       - run:
-          command: tar -cvzf workspace.tar /Users/distiller
+          command: tar -cvzf workspace.tar /Users/distiller/project
       - store_artifacts: 
           path: workspace.tar
           destination: artifacts
